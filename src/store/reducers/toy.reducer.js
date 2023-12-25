@@ -4,9 +4,13 @@ export const REMOVE_TOY = 'REMOVE_TOY'
 export const ADD_TOY = 'ADD_TOY'
 export const UPDATE_TOY = 'UPDATE_TOY'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
+export const SET_FILTER = 'SET_FILTER'
+export const SET_SORT = 'SET_SORT'
 
 const initialState = {
   toys: [],
+  filterBy: { name: '', stockStatus: 'all' },
+  sortBy: 'name',
   isLoading: false,
 }
 
@@ -14,6 +18,7 @@ export function toyReducer(state = initialState, action = {}) {
   let toys
 
   switch (action.type) {
+    // * TOYS CRUD
     case SET_TOYS:
       return { ...state, toys: action.toys }
 
@@ -31,6 +36,13 @@ export function toyReducer(state = initialState, action = {}) {
       )
       return { ...state, toys }
 
+    // * FILTER
+    case SET_FILTER:
+      return { ...state, filterBy: action.filterBy }
+    case SET_SORT:
+      return { ...state, sortBy: action.sortBy }
+
+    // * LOADING
     case SET_IS_LOADING:
       return { ...state, isLoading: action.isLoading }
 

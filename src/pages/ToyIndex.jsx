@@ -9,9 +9,12 @@ import { toyService } from "../services/toy.service"
 export function ToyIndex(){
 
   const toys = useSelector(storeState => storeState.toyModule.toys)
+  const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
+  const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
+
   useEffect(()=>{
     loadToys()
-  },[])
+  },[filterBy,sortBy])
 
   function onAdd(){
     const toy = toyService.getEmptyToy()
@@ -25,7 +28,7 @@ export function ToyIndex(){
 
   return (
     <section className="toy-index-page">
-      <ToyList toys={toys} onAdd={onAdd} onDelete={onDelete} />
+      <ToyList toys={toys} onAdd={onAdd} onDelete={onDelete}  />
     </section>
   )
 }
