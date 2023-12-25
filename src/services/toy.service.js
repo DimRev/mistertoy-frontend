@@ -55,6 +55,7 @@ const demoData = [
 import Axios from 'axios'
 import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
+import { storageService } from './async-storage.service.js'
 
 // for cookies
 const axios = Axios.create({
@@ -62,6 +63,9 @@ const axios = Axios.create({
 })
 
 const BASE_URL = 'toy/'
+const STORAGE_KEY = 'toyDB'
+
+_demoDataLocalStorage()
 
 export const toyService = {
   query,
@@ -73,22 +77,26 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
-  return Promise.resolve(demoData)
+  return storageService.query(STORAGE_KEY)
   // return httpService.get(BASE_URL, filterBy)
 }
 
 function getById(toyId) {
+  return storageService.get(STORAGE_KEY, toyId)
   // return httpService.get(BASE_URL + toyId)
 }
 
 function remove(toyId) {
+  return storageService.remove(STORAGE_KEY, toyId)
   // return httpService.delete(BASE_URL + toyId)
 }
 
 function save(toy) {
   if (toy._id) {
+    return storageService.put(STORAGE_KEY, toy)
     // return httpService.put(BASE_URL, toy)
   } else {
+    return storageService.post(STORAGE_KEY, toy)
     // return httpService.post(BASE_URL, toy)
   }
 }
@@ -105,4 +113,9 @@ function getEmptyToy() {
 
 function getDefaultFilter() {
   return { name: '', price: 0, labels: '', Date: '', availability: 'all' }
+}
+
+function _demoDataLocalStorage() {
+  const toys = utilService.loadFromStorage(STORAGE_KEY)
+  if (!toys || toys.length === 0) utilService.saveToStorage(STORAGE_KEY, demoData)
 }

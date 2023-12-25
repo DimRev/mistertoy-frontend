@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux"
-import { loadToys } from "../store/actions/toy.actions"
 import { useEffect } from "react"
+
 import { ToyList } from "../cmps/ToyIndexCmps/ToyList"
+
+import { loadToys,removeToy } from "../store/actions/toy.actions"
 
 export function ToyIndex(){
 
@@ -9,9 +11,15 @@ export function ToyIndex(){
   useEffect(()=>{
     loadToys()
   },[])
+
+  function onDelete(toyId){
+    removeToy(toyId)
+  }
+
+
   return (
     <>
-      <ToyList toys={toys}/>
+      <ToyList toys={toys} onDelete={onDelete} />
     </>
   )
 }
