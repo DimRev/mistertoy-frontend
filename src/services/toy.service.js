@@ -73,7 +73,7 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
-  return new Promise.resolve(labels)
+  return Promise.resolve(demoData)
   // return httpService.get(BASE_URL, filterBy)
 }
 
