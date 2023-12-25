@@ -1,0 +1,22 @@
+.toy-preview-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: var(--primary);
+  color: var(--primary-content);
+
+  border-radius: 15px;
+  padding: 1em .6em;
+}
+
+.toy-preview-item .toy-label{
+  font-size: .6em;
+
+  background-color: var(--accent);
+  color: var(--accent-content);
+
+  margin: 0 .2em;
+  padding: .5em 1.1em;
+  border-radius: 1000px;
+}

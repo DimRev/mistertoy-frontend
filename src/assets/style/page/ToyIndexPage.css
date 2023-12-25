@@ -1,0 +1,13 @@
+.toy-list-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+  background-color: var(--foreground);
+
+  padding: 2em;
+  border-radius: 15px;
+  gap: .5em;
+
+}
+
+
