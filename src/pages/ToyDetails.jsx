@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toyService } from '../services/toy.service'
-import { ToyPreview } from '../cmps/ToyIndexCmps/ToyPreview'
+import { ToyPreview } from '../cmps/ToyPreview'
 
 export function ToyDetails() {
   const { toyId } = useParams()

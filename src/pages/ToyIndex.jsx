@@ -5,6 +5,7 @@ import { ToyList } from "../cmps/ToyIndexCmps/ToyList"
 
 import { loadToys,removeToy, saveToy } from "../store/actions/toy.actions"
 import { toyService } from "../services/toy.service"
+import { ToyFilter } from "../cmps/ToyIndexCmps/ToyFilter"
 
 export function ToyIndex(){
 
@@ -28,7 +29,9 @@ export function ToyIndex(){
 
   return (
     <section className="toy-index-page">
-      <ToyList toys={toys} onAdd={onAdd} onDelete={onDelete}  />
+      <ToyFilter />
+      <button onClick={onAdd}>Add toy</button>
+      <ToyList toys={toys} onDelete={onDelete}  />
     </section>
   )
 }

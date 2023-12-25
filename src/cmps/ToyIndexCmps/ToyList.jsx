@@ -1,12 +1,9 @@
-import { ToyFilter } from './ToyFilter'
-import { ToyPreview } from './ToyPreview'
+import { ToyPreview } from '../ToyPreview'
 
-export function ToyList({ toys, onAdd, onDelete }) {
+export function ToyList({ toys, onDelete }) {
   if (!toys || !toys.length === 0) return <h1>Toy List : No toys</h1>
   return (
-    <section className='toy-list-section'>
-      <ToyFilter/>
-    <button onClick={onAdd}>Add toy</button>
+    <section className="toy-list-section">
       {toys.map((toy) => (
         <ToyPreview key={toy._id} toy={toy} onDelete={onDelete} />
       ))}

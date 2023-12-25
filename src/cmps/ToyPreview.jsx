@@ -14,13 +14,15 @@ export function ToyPreview({ toy, onDelete }) {
           </span>
         ))}
       </h3>
-      <button onClick={() => onDelete(toy._id)}>Delete</button>
-      <Link to={`/toy/edit/${toy._id}`}>
-        <button>Edit</button>
-      </Link>
-      <Link to={`/toy/${toy._id}`}>
-        <button>Details</button>
-      </Link>
+      <div className="btn-container">
+        <button onClick={() => onDelete(toy._id)}>Delete</button>
+        <Link to={`/toy/edit/${toy._id}`}>
+          <button>Edit</button>
+        </Link>
+        <Link to={`/toy/${toy._id}`}>
+          <button>Details</button>
+        </Link>
+      </div>
     </article>
   )
 }
