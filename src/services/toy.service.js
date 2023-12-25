@@ -65,7 +65,7 @@ const axios = Axios.create({
 const BASE_URL = 'toy/'
 const STORAGE_KEY = 'toyDB'
 
-_demoDataLocalStorage()
+// _demoDataLocalStorage()
 
 export const toyService = {
   query,
@@ -77,37 +77,28 @@ export const toyService = {
 }
 
 function query(filterBy = {}, sortBy = 'name') {
-  console.log('toyService query ->', filterBy, sortBy)
-  return storageService.query(STORAGE_KEY).then((toys) => {
-    switch (sortBy) {
-      case 'name':
-        return toys.sort((t1, t2) => t1.name.localeCompare(t2.name))
-      case 'price':
-        return toys.sort((t1, t2) => t1.price - t2.price)
-      case 'date':
-        return toys.sort((t1, t2) => t1.createAt - t2.createdAt)
-    }
-  })
-  // return httpService.get(BASE_URL, filterBy)
+
+  // return storageService.query(STORAGE_KEY)
+  return httpService.get(BASE_URL, filterBy)
 }
 
 function getById(toyId) {
-  return storageService.get(STORAGE_KEY, toyId)
-  // return httpService.get(BASE_URL + toyId)
+  // return storageService.get(STORAGE_KEY, toyId)
+  return httpService.get(BASE_URL + toyId)
 }
 
 function remove(toyId) {
-  return storageService.remove(STORAGE_KEY, toyId)
-  // return httpService.delete(BASE_URL + toyId)
+  // return storageService.remove(STORAGE_KEY, toyId)
+  return httpService.delete(BASE_URL + toyId)
 }
 
 function save(toy) {
   if (toy._id) {
-    return storageService.put(STORAGE_KEY, toy)
-    // return httpService.put(BASE_URL, toy)
+    // return storageService.put(STORAGE_KEY, toy)
+    return httpService.put(BASE_URL, toy)
   } else {
-    return storageService.post(STORAGE_KEY, toy)
-    // return httpService.post(BASE_URL, toy)
+    // return storageService.post(STORAGE_KEY, toy)
+    return httpService.post(BASE_URL, toy)
   }
 }
 

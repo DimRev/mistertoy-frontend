@@ -1,10 +1,34 @@
+import { userService } from "../../services/user.service.js"
+
+
+
+
+/// user
+export const SET_USER = 'SET_USER'
+export const SET_USER_SCORE = 'SET_USER_SCORE'
+
 const initialState = {
-  toys: [],
+    count: 101,
+    loggedinUser: userService.getLoggedinUser(),
 }
 
-export function userReducer(state = initialState, action = {}){
-  switch(action.type){
-    default:
-      return state
-  }
+export function userReducer(state = initialState, action = {}) {
+
+    switch (action.type) {
+        case 'INCREMENT':
+            return { ...state, count: state.count + 1 }
+        case 'DECREMENT':
+            return { ...state, count: state.count - 1 }
+        case 'CHANGE_BY':
+            return { ...state, count: state.count + action.diff }
+
+        // user
+        case SET_USER:
+            return { ...state, loggedinUser: action.user }
+        case SET_USER_SCORE:
+            const user = { ...state.loggedinUser, score: action.score }
+            return { ...state, loggedinUser: user }
+        default:
+            return state
+    }
 }
