@@ -19,7 +19,6 @@ function getById(userId) {
 }
 
 function login({ username, password }) {
-console.log('front->login' , username, password);
     return httpService.post(BASE_URL + 'login', { username, password })
         .then(user => {
             if (user) return _setLoggedinUser(user)

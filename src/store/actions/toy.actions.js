@@ -16,7 +16,6 @@ export function loadToys() {
   const filterBy = store.getState().toyModule.filterBy
   const sortBy = store.getState().toyModule.sortBy
 
-  console.log('LoadToys', filterBy, sortBy)
 
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
   return toyService
@@ -64,11 +63,9 @@ export function saveToy(toy) {
 }
 
 export function setFilter(filterBy) {
-  console.log('setFilter -> ',filterBy);
   store.dispatch({ type: SET_FILTER, filterBy })
 }
 
 export function setSort(sortBy) {
-  console.log('setSort -> ',sortBy);
   store.dispatch({ type: SET_SORT, sortBy })
 }
