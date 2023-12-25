@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { loadToys } from "../store/actions/toy.actions"
 import { useEffect } from "react"
+import { ToyList } from "../cmps/ToyIndexCmps/ToyList"
 
 export function ToyIndex(){
 
@@ -8,8 +9,9 @@ export function ToyIndex(){
   useEffect(()=>{
     loadToys()
   },[])
-  console.log(toys)
   return (
-    <h1>Toy Index Page</h1>
+    <>
+      <ToyList toys={toys}/>
+    </>
   )
 }
