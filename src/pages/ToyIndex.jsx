@@ -3,7 +3,8 @@ import { useEffect } from "react"
 
 import { ToyList } from "../cmps/ToyIndexCmps/ToyList"
 
-import { loadToys,removeToy } from "../store/actions/toy.actions"
+import { loadToys,removeToy, saveToy } from "../store/actions/toy.actions"
+import { toyService } from "../services/toy.service"
 
 export function ToyIndex(){
 
@@ -12,6 +13,11 @@ export function ToyIndex(){
     loadToys()
   },[])
 
+  function onAdd(){
+    const toy = toyService.getEmptyToy()
+    saveToy(toy)
+  }
+
   function onDelete(toyId){
     removeToy(toyId)
   }
@@ -19,7 +25,7 @@ export function ToyIndex(){
 
   return (
     <>
-      <ToyList toys={toys} onDelete={onDelete} />
+      <ToyList toys={toys} onAdd={onAdd} onDelete={onDelete} />
     </>
   )
 }

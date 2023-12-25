@@ -103,8 +103,8 @@ function save(toy) {
 
 function getEmptyToy() {
   return {
-    name: 'Empty Toy',
-    price: 69420,
+    name: utilService.makeLorem(2),
+    price: utilService.getRandomIntInclusive(10, 200),
     labels: [],
     createdAt: Date.now(),
     inStock: true,
