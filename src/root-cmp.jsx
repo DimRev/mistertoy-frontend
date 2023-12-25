@@ -16,13 +16,15 @@ export function App() {
     <Provider store={store}>
       <Router>
         <AppHeader />
-        <Routes>
-          <Route element={<HomePage />} path="/" />
-          <Route element={<AboutPage />} path="/about" />
-          <Route element={<ToyIndex />} path="/toy" />
-          <Route element={<ToyEdit />} path="/toy/edit/:toyId" />
-          <Route element={<ToyDetails />} path="/toy/:toyId" />
-        </Routes>
+        <main className="main-layout">
+          <Routes>
+            <Route element={<HomePage />} path="/" />
+            <Route element={<AboutPage />} path="/about" />
+            <Route element={<ToyIndex />} path="/toy" />
+            <Route element={<ToyEdit />} path="/toy/edit/:toyId" />
+            <Route element={<ToyDetails />} path="/toy/:toyId" />
+          </Routes>
+        </main>
       </Router>
     </Provider>
   )

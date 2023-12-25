@@ -1,0 +1,12 @@
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 900px 1fr;
+}
+
+.main-layout > * {
+  grid-column: 2;
+}
+
+.full {
+  grid-column: 1/3;
+}
