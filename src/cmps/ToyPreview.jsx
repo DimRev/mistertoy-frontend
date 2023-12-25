@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom'
 import { utilService } from '../services/util.service'
 
 export function ToyPreview({ toy, onDelete }) {
+  const regionalCurrencySymbol = '₪'
   return (
     <article className="toy-preview-item">
       <h2>{toy.name} </h2>
-      <h4>
-        {toy.price} {toy.inStock ? 'In stock' : 'Not in stock'}
+      <h4 className={`price ${toy.inStock ? 'in-stock' : 'not-in-stock'}`}>
+        {toy.price}
+        {regionalCurrencySymbol}
       </h4>
       <h5>{utilService.timeDiff(toy.createdAt)}</h5>
       <h3>

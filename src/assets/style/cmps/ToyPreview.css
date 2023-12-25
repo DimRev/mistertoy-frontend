@@ -20,3 +20,21 @@
   padding: .5em 1.1em;
   border-radius: 1000px;
 }
+
+.toy-preview-item .price{
+  justify-self: center;
+  align-self: center;
+
+  padding: .2em 1.5em;
+  border: 2px solid var(--border);
+  border-radius: 7px;
+}
+
+.toy-preview-item .price.in-stock {
+  background-color: var(--success);
+  color: var(--success-content);
+}
+.toy-preview-item .price.not-in-stock {
+  background-color: var(--error);
+  color: var(--error-content);
+}
