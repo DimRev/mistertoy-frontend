@@ -6,8 +6,8 @@ import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
 
 export function ToyFilter() {
-  const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
-  const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
+  const filterBy = useSelector((storeState) => storeState.toyModule.filterBy)
+  const sortBy = useSelector((storeState) => storeState.toyModule.sortBy)
 
   useEffect(() => {
     setFilter(filterBy)
@@ -36,11 +36,11 @@ export function ToyFilter() {
 
   return (
     <section className="toy-filter-section">
-      <h4>Filter toys</h4>
-      <form>
+      <h4 className="title">Filter toys</h4>
+      <form className="filter-form">
         <label htmlFor="name">Name</label>
         <input type="text" name="name" id="name" onChange={handleChange} />
-        <div>
+        <div className="radio-input">
           <label htmlFor="all">All</label>
           <input
             type="radio"
@@ -70,7 +70,7 @@ export function ToyFilter() {
           />
         </div>
       </form>
-      <h4>Sort results</h4>
+      <h4 className="title">Sort results</h4>
       <select name="sortBy" value={sortBy} onChange={handleChange}>
         <option value="name">Name</option>
         <option value="price">Price</option>

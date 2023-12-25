@@ -1,3 +1,9 @@
+.toy-index-page{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 .toy-list-section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -10,4 +16,41 @@
 
 }
 
+.toy-filter-section .title {
+  text-align: center;
+  border-bottom: 1px solid var(--copy);
+  border-top: 1px solid var(--copy);
 
+  padding: 1em 0;
+  margin: .5em;
+
+  text-transform: uppercase;
+}
+
+.toy-filter-section {
+  background-color: var(--foreground);
+
+  padding: 2em;
+  border-radius: 15px;
+}
+
+.toy-filter-section .filter-form{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  align-items: center;
+
+  gap: 1em;
+}
+
+.toy-filter-section .filter-form label {
+  justify-self: start;
+}
+
+.toy-filter-section .filter-form input[type="text"]{
+  justify-self: stretch;
+}
+
+.toy-filter-section .filter-form .radio-input{
+  grid-column: 1/-1;
+}
