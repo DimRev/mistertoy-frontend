@@ -24,8 +24,8 @@ export function ToyIndex(){
 
 
   return (
-    <>
+    <section className="toy-index-page">
       <ToyList toys={toys} onAdd={onAdd} onDelete={onDelete} />
-    </>
+    </section>
   )
 }
