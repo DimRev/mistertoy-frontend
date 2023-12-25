@@ -1,3 +1,14 @@
 /* setup */
 @import './base/base.css';
 @import './base/layout.css';
+@import './base/variables.css';
+
+/* pages */
+@import './page/AboutPage.css';
+@import './page/HomePage.css';
+@import './page/ToyDetailsPage.css';
+@import './page/ToyEditPage.css';
+@import './page/ToyIndexPage.css';
+
+/* cmps */
+@import './cmps/ToyPreview.css';
