@@ -76,8 +76,18 @@ export const toyService = {
   getDefaultFilter,
 }
 
-function query(filterBy = {}) {
-  return storageService.query(STORAGE_KEY)
+function query(filterBy = {}, sortBy = 'name') {
+  console.log('toyService query ->', filterBy, sortBy)
+  return storageService.query(STORAGE_KEY).then((toys) => {
+    switch (sortBy) {
+      case 'name':
+        return toys.sort((t1, t2) => t1.name.localeCompare(t2.name))
+      case 'price':
+        return toys.sort((t1, t2) => t1.price - t2.price)
+      case 'date':
+        return toys.sort((t1, t2) => t1.createAt - t2.createdAt)
+    }
+  })
   // return httpService.get(BASE_URL, filterBy)
 }
 
@@ -117,5 +127,6 @@ function getDefaultFilter() {
 
 function _demoDataLocalStorage() {
   const toys = utilService.loadFromStorage(STORAGE_KEY)
-  if (!toys || toys.length === 0) utilService.saveToStorage(STORAGE_KEY, demoData)
+  if (!toys || toys.length === 0)
+    utilService.saveToStorage(STORAGE_KEY, demoData)
 }
