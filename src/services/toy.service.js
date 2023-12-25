@@ -79,7 +79,7 @@ export const toyService = {
 function query(filterBy = {}, sortBy = 'name') {
 
   // return storageService.query(STORAGE_KEY)
-  return httpService.get(BASE_URL, filterBy)
+  return httpService.get(BASE_URL, {filterBy, sortBy})
 }
 
 function getById(toyId) {

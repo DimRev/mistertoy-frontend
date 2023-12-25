@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { utilService } from '../services/util.service'
 
 export function ToyPreview({ toy, onDelete }) {
   return (
@@ -7,6 +8,7 @@ export function ToyPreview({ toy, onDelete }) {
       <h4>
         {toy.price} {toy.inStock ? 'In stock' : 'Not in stock'}
       </h4>
+      <h5>{utilService.timeDiff(toy.createdAt)}</h5>
       <h3>
         {toy.labels.map((label, idx) => (
           <span key={`${toy._id}${idx}`} className="toy-label">
