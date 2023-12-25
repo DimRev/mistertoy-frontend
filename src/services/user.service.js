@@ -19,7 +19,7 @@ function getById(userId) {
 }
 
 function login({ username, password }) {
-
+console.log('front->login' , username, password);
     return httpService.post(BASE_URL + 'login', { username, password })
         .then(user => {
             if (user) return _setLoggedinUser(user)
@@ -72,4 +72,11 @@ function getEmptyCredentials() {
         fullname: ''
     }
 }
+
+
+// Test Data
+// userService.signup({username: 'muki', password: 'muki1', fullname: 'Muki Ja'})
+// userService.login({username: 'muki', password: 'muki1'})
+
+
 

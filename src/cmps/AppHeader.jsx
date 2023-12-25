@@ -1,8 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import { LoginSignup } from './LoginSignup'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { userService } from '../services/user.service'
+import { SET_USER } from '../store/reducers/user.reducer'
+import { showErrorMsg } from '../services/event-bus.service'
 
 export function AppHeader() {
+  const dispatch = useDispatch()
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
 
   function onLogout() {
