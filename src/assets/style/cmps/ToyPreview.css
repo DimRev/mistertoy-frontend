@@ -1,4 +1,4 @@
-.toy-preview-item{
+/* .toy-preview-item{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -37,4 +37,4 @@
 .toy-preview-item .price.not-in-stock {
   background-color: var(--error);
   color: var(--error-content);
-}
+} */
