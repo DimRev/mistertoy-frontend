@@ -37,7 +37,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { Button, CardActionArea, CardActions } from '@mui/material'
+import { Button, CardActionArea, CardActions, Chip, Stack } from '@mui/material'
 
 export function ToyPreview({ toy, onDelete }) {
   return (
@@ -45,18 +45,24 @@ export function ToyPreview({ toy, onDelete }) {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          height="300"
+          image={`${toy.img}`}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {toy.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
+          <Stack direction="row" spacing={1}>
+            {toy.labels.map((label, idx) => (
+              <Chip
+                key={`${toy._id}${idx}`}
+                color="secondary"
+                size="small"
+                label={label}
+              />
+            ))}
+          </Stack>
         </CardContent>
       </CardActionArea>
       <CardActions>
