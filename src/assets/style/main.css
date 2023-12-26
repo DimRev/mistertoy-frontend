@@ -2,6 +2,7 @@
 @import './base/base.css';
 @import './base/layout.css';
 @import './base/variables.css';
+@import './base/typography.css';
 
 /* pages */
 @import './page/AboutPage.css';
@@ -12,3 +13,4 @@
 
 /* cmps */
 @import './cmps/ToyPreview.css';
+
