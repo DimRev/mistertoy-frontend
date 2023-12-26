@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { userService } from "../services/user.service.js"
+import { Button } from "@mui/material"
 
 // const { useState } = React
 
@@ -45,7 +46,7 @@ export function LoginForm({ onLogin, isSignup }) {
                 onChange={handleChange}
                 required
             />}
-            <button>{isSignup ? 'Signup' : 'Login'}</button>
+            <Button variant="contained">{isSignup ? 'Signup' : 'Login'}</Button>
         </form>
     )
 }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../services/user.service'
 import { SET_USER } from '../store/reducers/user.reducer'
 import { showErrorMsg } from '../services/event-bus.service'
+import { Button } from '@mui/material'
 
 export function AppHeader() {
   const dispatch = useDispatch()
@@ -40,7 +41,8 @@ function onSetUser(user) {
           <span to={`/user/${user._id}`}>
             Hello {user.fullname} <span>${user.score.toLocaleString()}</span>
           </span>
-          <button onClick={onLogout}>Logout</button>
+
+          <Button variant='contained' onClick={onLogout}>Logout</Button>
         </section>
       ) : (
         <section>

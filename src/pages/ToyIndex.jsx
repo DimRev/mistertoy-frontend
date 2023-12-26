@@ -1,41 +1,42 @@
-import { useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import Button from '@mui/material/Button'
 
-import { ToyList } from "../cmps/ToyIndexCmps/ToyList"
+import { ToyList } from '../cmps/ToyIndexCmps/ToyList'
 
-import { loadToys,removeToy, saveToy } from "../store/actions/toy.actions"
-import { toyService } from "../services/toy.service"
-import { ToyFilter } from "../cmps/ToyIndexCmps/ToyFilter"
-import { ToySort } from "../cmps/ToyIndexCmps/ToySort"
-import { TestCmps } from "../cmps/testCmps"
+import { loadToys, removeToy, saveToy } from '../store/actions/toy.actions'
+import { toyService } from '../services/toy.service'
+import { ToyFilter } from '../cmps/ToyIndexCmps/ToyFilter'
+import { ToySort } from '../cmps/ToyIndexCmps/ToySort'
+import { TestCmps } from '../cmps/testCmps'
 
-export function ToyIndex(){
+export function ToyIndex() {
+  const toys = useSelector((storeState) => storeState.toyModule.toys)
+  const filterBy = useSelector((storeState) => storeState.toyModule.filterBy)
+  const sortBy = useSelector((storeState) => storeState.toyModule.sortBy)
 
-  const toys = useSelector(storeState => storeState.toyModule.toys)
-  const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
-  const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
-
-  useEffect(()=>{
+  useEffect(() => {
     loadToys()
-  },[filterBy,sortBy])
+  }, [filterBy, sortBy])
 
-  function onAdd(){
+  function onAdd() {
     const toy = toyService.getEmptyToy()
     saveToy(toy)
   }
 
-  function onDelete(toyId){
+  function onDelete(toyId) {
     removeToy(toyId)
   }
-
 
   return (
     <section className="toy-index-page">
       <ToyFilter />
       {/* <TestCmps /> */}
       <ToySort />
-      <button onClick={onAdd}>Add toy</button>
-      <ToyList toys={toys} onDelete={onDelete}  />
+      <Button variant="text" onClick={onAdd}>
+        Add toy
+      </Button>
+      <ToyList toys={toys} onDelete={onDelete} />
     </section>
   )
 }

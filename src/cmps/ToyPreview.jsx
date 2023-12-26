@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { utilService } from '../services/util.service'
+import Button from '@mui/material/Button';
 
 export function ToyPreview({ toy, onDelete }) {
   const regionalCurrencySymbol = '₪'
@@ -19,12 +20,12 @@ export function ToyPreview({ toy, onDelete }) {
         ))}
       </h3>
       <div className="btn-container">
-        <button onClick={() => onDelete(toy._id)}>Delete</button>
+        <Button variant='outlined' onClick={() => onDelete(toy._id)}>Delete</Button>
         <Link to={`/toy/edit/${toy._id}`}>
-          <button>Edit</button>
+          <Button variant='outlined'>Edit</Button>
         </Link>
         <Link to={`/toy/${toy._id}`}>
-          <button>Details</button>
+          <Button variant='outlined'>Details</Button>
         </Link>
       </div>
     </article>

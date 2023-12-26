@@ -23,7 +23,6 @@ export function ToyFilter() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
-    console.log(name, value, type, checked)
     if (type === 'radio') {
       setFilter({
         ...filterBy,
