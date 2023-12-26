@@ -1,4 +1,4 @@
-/* html{
+ html{
   box-sizing: border-box;
 }
 
@@ -7,37 +7,5 @@ body {
   margin: 0;
 
   background-color: var(--background);
-  color: var(--copy);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 .6em;
-}
-
-li, ul {
-  list-style: none;
-}
-
-a {
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
-  margin: .6em;
-}
-
-button {
-  cursor: pointer;
-  padding: .4em 1.2em;
-  border-radius: 7px;
-  border: none;
-  outline: none;
-  box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, .5);
-}
-
-input[type="text"], input[type="password"]{
-  padding: .4em 2em;
-  border-radius: 100px;
-  outline: none;
-  border: none;
-  box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, .2);
-} */

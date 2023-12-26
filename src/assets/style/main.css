@@ -7,6 +7,7 @@
 /* pages */
 @import './page/AboutPage.css';
 @import './page/HomePage.css';
+@import './page/DashboardPage.css';
 @import './page/ToyDetailsPage.css';
 @import './page/ToyEditPage.css';
 @import './page/ToyIndexPage.css';
