@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,11 +8,10 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js'
-import { Bar } from 'react-chartjs-2'
-import { dashboardService } from '../../services/dashboard.service'
+} from 'chart.js';
+import { dashboardService } from '../../services/dashboard.service';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export const options = {
   responsive: true,
@@ -24,7 +24,7 @@ export const options = {
       text: 'Total/In-Stock',
     },
   },
-}
+};
 
 const labels = [
   'On wheels',
@@ -35,9 +35,7 @@ const labels = [
   'Puzzle',
   'Outdoor',
   'Battery Powered',
-]
-
-
+];
 
 export function InventoryLabelChart() {
   const [data, setData] = useState({
@@ -46,7 +44,7 @@ export function InventoryLabelChart() {
       {
         label: 'total inventory',
         data: [0, 0, 0, 0, 0, 0, 0, 0],
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: 'rgba(122, 255, 122, 0.5)',
       },
       {
         label: 'in stock',
@@ -54,10 +52,10 @@ export function InventoryLabelChart() {
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
     ],
-  })
+  });
 
   useEffect(() => {
-    dashboardService.query().then(({ inventoryByLabel,totalByLabel }) => {
+    dashboardService.query().then(({ inventoryByLabel, totalByLabel }) => {
       setData({
         labels,
         datasets: [
@@ -72,9 +70,17 @@ export function InventoryLabelChart() {
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
           },
         ],
-      })
-    })
-  }, [])
+      });
+    });
+  }, []);
 
-  return <Bar options={options} data={data} />
+  return (
+    <Bar
+      className="inventory-label-chart"
+      options={options}
+      data={data}
+      width={500}
+      height={500}
+    />
+  );
 }

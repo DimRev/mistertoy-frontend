@@ -1,14 +1,15 @@
-import { InventoryLabelChart } from "../cmps/DashboardCmps/inventoryLabelChart";
-import { PriceLabelChart } from "../cmps/DashboardCmps/priceLabelChart";
+import { InventoryLabelChart } from '../cmps/DashboardCmps/inventoryLabelChart'
+import { PriceLabelChart } from '../cmps/DashboardCmps/priceLabelChart'
 
 export function DashboardPage() {
-
-
-
   return (
     <section className="dashboard-page">
-      <PriceLabelChart />
-      <InventoryLabelChart />
+      <div className="chart-wrapper">
+        <PriceLabelChart />
+      </div>
+      <div className="chart-wrapper">
+        <InventoryLabelChart />
+      </div>
     </section>
   )
 }
