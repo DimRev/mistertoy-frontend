@@ -9,7 +9,7 @@ export const SET_SORT = 'SET_SORT'
 
 const initialState = {
   toys: [],
-  filterBy: { name: '', stockStatus: 'all' },
+  filterBy: { name: '', stockStatus: 'all' , labels: ['All']},
   sortBy: 'name',
   isLoading: false,
 }
