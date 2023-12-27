@@ -26,19 +26,19 @@ function timeDiff(ts) {
   let tsDiff = now - ts
 
   tsDiff = Math.floor(tsDiff / 1000) //sec
-  if (tsDiff < 60) return tsDiff + 'seconds ago'
+  if (tsDiff < 60) return tsDiff + ' seconds ago'
   tsDiff = Math.floor(tsDiff / 60) //min
-  if (tsDiff < 60) return tsDiff + 'min ago'
+  if (tsDiff < 60) return tsDiff + ' mins ago'
   tsDiff = Math.floor(tsDiff / 60) //hour
-  if (tsDiff < 24) return tsDiff + 'hour ago'
+  if (tsDiff < 24) return tsDiff + ' hours ago'
   tsDiff = Math.floor(tsDiff / 24) //day
-  if (tsDiff < 7) return tsDiff + 'days ago'
+  if (tsDiff < 7) return tsDiff + ' days ago'
   tsDiff = Math.floor(tsDiff / 7) //week
-  if (tsDiff < 4) return tsDiff + 'weeks ago'
+  if (tsDiff < 4) return tsDiff + ' weeks ago'
   tsDiff = Math.floor(tsDiff / 4) //month
-  if (tsDiff < 12) return tsDiff + 'months ago'
+  if (tsDiff < 12) return tsDiff + ' months ago'
   tsDiff = Math.floor(tsDiff / 12) //year
-  return tsDiff + 'years ago'
+  return tsDiff + ' years ago'
 }
 
 function makeLorem(size = 100) {

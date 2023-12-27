@@ -48,8 +48,8 @@ export function removeToy(toyId) {
 }
 
 export function saveToy(toy) {
-  const type = toy.id ? UPDATE_TOY : ADD_TOY
-  const errType = toy.id ? 'update' : 'add'
+  const type = toy._id ? UPDATE_TOY : ADD_TOY
+  const errType = toy._id ? 'update' : 'add'
   store.dispatch({ type: SET_IS_LOADING, isLoading: true})
   return toyService.save(toy).then((toyToSave) => {
     store.dispatch({ type, toy: toyToSave })
