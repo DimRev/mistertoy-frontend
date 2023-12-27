@@ -62,12 +62,12 @@ export function InventoryLabelChart() {
           {
             label: 'total inventory',
             data: labels.map((label) => totalByLabel[label]),
-            backgroundColor: 'rgba(122, 255, 122, 0.5)',
+            backgroundColor: 'rgba(12, 255, 12, 0.8)',
           },
           {
             label: 'in stock',
             data: labels.map((label) => inventoryByLabel[label]),
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: 'rgba(12, 12, 255, 0.8)',
           },
         ],
       });

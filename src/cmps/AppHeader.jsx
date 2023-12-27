@@ -32,10 +32,10 @@ function onSetUser(user) {
   return (
     <header className="app-header full main-layout">
       <nav className="header-nav">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-        <NavLink to="/toy">Toys</NavLink>
+        <NavLink className="nav-link-btn" to="/">Home</NavLink>
+        <NavLink className="nav-link-btn" to="/about">About</NavLink>
+        <NavLink className="nav-link-btn" to="/dashboard">Dashboard</NavLink>
+        <NavLink className="nav-link-btn" to="/toy">Toys</NavLink>
       </nav>
       {user ? (
         <section>

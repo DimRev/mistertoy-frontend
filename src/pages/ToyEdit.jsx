@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toyService } from '../services/toy.service'
-import { ToyPreview } from '../cmps/ToyPreview'
+import { ToyPreviewEdit } from '../cmps/ToyPreviewEdit'
 
 export function ToyEdit() {
   const { toyId } = useParams()
@@ -17,7 +17,8 @@ export function ToyEdit() {
   return (
     <section className="toy-edit-page">
       <h2>Toy Edit</h2>
-      <ToyPreview toy={selectedToy} />
+
+      <ToyPreviewEdit toy={selectedToy} />
     </section>
   )
 }

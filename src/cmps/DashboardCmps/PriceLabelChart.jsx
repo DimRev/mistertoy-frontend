@@ -57,7 +57,7 @@ export function PriceLabelChart() {
           {
             label: 'price',
             data: labels.map((label) => pricePerLabel[label]),
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: 'rgba(255, 255, 12, 0.8)',
           },
         ],
       });

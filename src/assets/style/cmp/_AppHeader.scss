@@ -1,0 +1,28 @@
+.app-header{
+  height: 120px;
+  justify-content: space-between;
+
+  .header-nav{
+    justify-self: end;
+    display: flex;
+
+    margin: 1em;
+    gap: 1em;
+
+    .nav-link-btn{
+      background-color: $accent;
+      color: $accent-content;
+      font-family: roboto;
+      border: 1px solid $border;
+      box-shadow: inset 5px 5px 7px 1px rgba(0, 0, 0, .5);
+
+      padding: .3em .7em;
+      border-radius: 7em;
+      text-decoration: none;
+    }
+
+    .nav-link-btn:hover{
+      background-color: $accent-dark;
+    }
+  }
+}

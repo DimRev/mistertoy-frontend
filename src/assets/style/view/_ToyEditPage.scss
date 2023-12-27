@@ -1,0 +1,13 @@
+.toy-edit-page {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+  text-align: center;
+
+  img {
+    align-self: center;
+    width: 50%;
+    object-fit: contain;
+  }
+}

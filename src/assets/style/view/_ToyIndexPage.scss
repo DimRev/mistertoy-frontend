@@ -10,7 +10,9 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    background-color: var(--foreground);
+    background-color: $foreground;
+    border-radius: 7px;
+
     @include for-narrow-layout {
       grid-template-columns: repeat(auto-fill, 380px);
       gap: .4em;
@@ -39,5 +41,9 @@
 
 
 .toy-index-page .preview-card{
-  background-color: #ffccbc;
+  background-color: $accent;
+  img {
+    width: 100%;
+    object-fit: contain;
+  }
 }

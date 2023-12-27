@@ -10,34 +10,33 @@ $padded-break-narrow: $break-narrow + $layoutPadding * 2;
 $padded-break-normal: $break-normal + $layoutPadding * 2;
 $padded-break-wide: $break-wide + $layoutPadding * 2;
 
-:root {
-  --primary: #ed3a51;
-  --primary-content: #ffffff;
-  --primary-dark: #e0142f;
-  --primary-light: #f1697a;
+// COLORS PALETTE
+$primary: #ed3a51;
+$primary-content: #ffffff;
+$primary-dark: #e0142f;
+$primary-light: #f1697a;
 
-  --secondary: #fef42b;
-  --secondary-content: #2a2800;
-  --secondary-dark: #f5e901;
-  --secondary-light: #fef75e;
+$secondary: #fef42b;
+$secondary-content: #2a2800;
+$secondary-dark: #f5e901;
+$secondary-light: #fef75e;
 
-  --accent: #3ecf8e;
-  --accent-content: #030b07;
-  --accent-dark: #2baf74;
-  --accent-light: #67d9a6;
+$accent: #3ecf8e;
+$accent-content: #030b07;
+$accent-dark: #2baf74;
+$accent-light: #67d9a6;
 
-  --background: #ffd54f;
-  --foreground: #ff8f00;
-  --border: #404040;
+$background: #7ef3be;
+$foreground: #4e4d3a;
 
-  --copy: #fbfbfb;
-  --copy-light: #d9d9d9;
-  --copy-lighter: #a6a6a6;
+$border: #404040;
+$copy: #fbfbfb;
+$copy-light: #d9d9d9;
+$copy-lighter: #a6a6a6;
+$success: #02ff02;
+$warning: #ffff02;
+$error: #ff0202;
+$success-content: #000200;
+$warning-content: #020200;
+$error-content: #ffffff;
 
-  --success: #02ff02;
-  --warning: #ffff02;
-  --error: #ff0202;
-  --success-content: #000200;
-  --warning-content: #020200;
-  --error-content: #ffffff;
-}

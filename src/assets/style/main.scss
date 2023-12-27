@@ -12,3 +12,9 @@
 //View
 @import './view/ToyIndexPage';
 @import './view/ToyDashboardPage';
+@import './view/ToyEditPage';
+@import './view/ToyDetailsPage';
+
+//Component
+@import './cmp/AppHeader';
+@import './cmp/ToyPreviewCard';
