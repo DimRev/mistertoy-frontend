@@ -30,7 +30,7 @@ function onSetUser(user) {
 }
 
   return (
-    <header className="app-header main-layout">
+    <header className="app-header full main-layout">
       <nav className="header-nav">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About</NavLink>

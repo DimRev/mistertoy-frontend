@@ -1,0 +1,14 @@
+// Setup
+@import './setup/typography';
+@import './setup/variables';
+@import './setup/functions';
+@import './setup/mixins';
+
+//Base
+@import './base/helpers';
+@import './base/base';
+@import './base/layout';
+
+//View
+@import './view/ToyIndexPage';
+@import './view/ToyDashboardPage';

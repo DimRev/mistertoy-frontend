@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Input } from '@mui/material'
+import { Button, Input, Stack } from '@mui/material'
 import { userService } from '../services/user.service.js'
 
 // const { useState } = React
@@ -21,37 +21,39 @@ export function LoginForm({ onLogin, isSignup }) {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <Input
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={credentials.username}
-        onChange={handleChange}
-        required
-        autoFocus
-      />
-      <Input
-        type="password"
-        name="password"
-        value={credentials.password}
-        placeholder="Password"
-        onChange={handleChange}
-        required
-        autoComplete="off"
-      />
-      {isSignup && (
+      <Stack direction="row" spacing={3}>
         <Input
           type="text"
-          name="fullname"
-          value={credentials.fullname}
-          placeholder="Full name"
+          name="username"
+          placeholder="Username"
+          value={credentials.username}
           onChange={handleChange}
           required
+          autoFocus
         />
-      )}
-      <Button variant="contained" onClick={handleSubmit}>
-        {isSignup ? 'Signup' : 'Login'}
-      </Button>
+        <Input
+          type="password"
+          name="password"
+          value={credentials.password}
+          placeholder="Password"
+          onChange={handleChange}
+          required
+          autoComplete="off"
+        />
+        {isSignup && (
+          <Input
+            type="text"
+            name="fullname"
+            value={credentials.fullname}
+            placeholder="Full name"
+            onChange={handleChange}
+            required
+          />
+        )}
+        <Button variant="contained" onClick={handleSubmit}>
+          {isSignup ? 'Signup' : 'Login'}
+        </Button>
+      </Stack>
     </form>
   )
 }

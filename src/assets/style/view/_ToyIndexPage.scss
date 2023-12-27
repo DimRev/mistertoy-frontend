@@ -1,0 +1,43 @@
+
+.toy-index-page {
+  .toy-filter-section{
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+  }
+
+  .toy-list-section{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background-color: var(--foreground);
+    @include for-narrow-layout {
+      grid-template-columns: repeat(auto-fill, 380px);
+      gap: .4em;
+      padding: .5em;
+      margin: .9em;
+    }
+
+    @include for-normal-layout {
+      grid-template-columns: repeat(auto-fill, minmax(250px ,1fr));
+      gap: .4em;
+      padding: .5em;
+      margin: .9em;
+    }
+
+    @include for-wide-layout {
+      grid-template-columns: repeat(auto-fill, minmax(240px ,1fr));
+      gap: 1.25em;
+      padding: 1em;
+      margin: 1em;
+    }
+  }
+
+
+
+}
+
+
+.toy-index-page .preview-card{
+  background-color: #ffccbc;
+}

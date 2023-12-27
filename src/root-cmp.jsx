@@ -1,7 +1,7 @@
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import './assets/style/main.css'
+import './assets/style/main.scss'
 
 import { store } from './store/store'
 import { HomePage } from './pages/HomePage'
@@ -15,9 +15,9 @@ import { DashboardPage } from './pages/DashboardPage'
 export function App() {
   return (
     <Provider store={store}>
-      <Router>
-        <AppHeader />
-        <main className="main-layout">
+      <main className="main-layout">
+        <Router>
+          <AppHeader />
           <Routes>
             <Route element={<HomePage />} path="/" />
             <Route element={<AboutPage />} path="/about" />
@@ -26,8 +26,8 @@ export function App() {
             <Route element={<ToyEdit />} path="/toy/edit/:toyId" />
             <Route element={<ToyDetails />} path="/toy/:toyId" />
           </Routes>
-        </main>
-      </Router>
+        </Router>
+      </main>
     </Provider>
   )
 }
