@@ -42,7 +42,7 @@ import { Button, CardActionArea, CardActions, Chip, Stack } from '@mui/material'
 
 export function ToyPreview({ toy, onDelete }) {
   return (
-      <Card className='preview-card' sx={{ maxWidth: 345 }}>
+      <Card className='preview-card' sx={{ maxWidth: 345, height: 500}}>
         <CardActionArea >
           <CardMedia
             component="img"
@@ -64,7 +64,7 @@ export function ToyPreview({ toy, onDelete }) {
                 $ {toy.price}
               </Typography>
             </Stack>
-            <Stack direction="row" spacing={1}>
+            <Stack direction="row" gap={.2} flexWrap="wrap">
               {toy.labels.map((label, idx) => (
                 <Chip
                   key={`${toy._id}${idx}`}
@@ -76,7 +76,7 @@ export function ToyPreview({ toy, onDelete }) {
             </Stack>
           </CardContent>
         </CardActionArea>
-        <CardActions>
+        <CardActions className='btn-container' sx={{ justifyContent: 'space-between' }}>
           <Button variant="outlined" onClick={() => onDelete(toy._id)}>
             Delete
           </Button>
