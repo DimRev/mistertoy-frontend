@@ -1,21 +1,21 @@
-:root{
-  --primary: #0299ff;
+:root {
+  --primary: #ed3a51;
   --primary-content: #ffffff;
-  --primary-dark: #007bce;
-  --primary-light: #35aeff;
+  --primary-dark: #e0142f;
+  --primary-light: #f1697a;
 
-  --secondary: #6802ff;
-  --secondary-content: #ffffff;
-  --secondary-dark: #5300ce;
-  --secondary-light: #8635ff;
+  --secondary: #fef42b;
+  --secondary-content: #2a2800;
+  --secondary-dark: #f5e901;
+  --secondary-light: #fef75e;
 
   --accent: #3ecf8e;
   --accent-content: #030b07;
   --accent-dark: #2baf74;
   --accent-light: #67d9a6;
 
-  --background: #e4e4e4;
-  --foreground: #262626;
+  --background: #ffd54f;
+  --foreground: #ff8f00;
   --border: #404040;
 
   --copy: #fbfbfb;

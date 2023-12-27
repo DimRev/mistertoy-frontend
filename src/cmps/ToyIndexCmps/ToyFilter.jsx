@@ -13,6 +13,7 @@ import { setFilter } from '../../store/actions/toy.actions'
 
 import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
+import { Box, Stack } from '@mui/material'
 
 export function ToyFilter() {
   const [value, setValue] = useState([labels[0]])
@@ -24,8 +25,8 @@ export function ToyFilter() {
   }, [filterBy])
 
   useEffect(() => {
-    setFilter({...filterBy, labels: value})
-  },[value])
+    setFilter({ ...filterBy, labels: value })
+  }, [value])
 
   const debounceSetFilter = useRef(utilService.debounce(setFilter, 500))
 
@@ -54,55 +55,56 @@ export function ToyFilter() {
 
   return (
     <section className="toy-filter-section">
-      <h4 className="title">Filter toys</h4>
-
-      <form className="filter-form">
-        <TextField
-          id="name-input"
-          name="name"
-          onChange={handleChange}
-          label="Toy Search"
-          variant="outlined"
-        />
-
-        <FormControl>
-          <FormLabel id="stock-status-radio-input">Stock Status</FormLabel>
-          <RadioGroup
+      <Box width={600} justifySelf>
+        <Stack>
+          <TextField
+            id="name-input"
+            name="name"
             onChange={handleChange}
-            row
-            aria-labelledby="stock-status-radio-input"
-            name="stockStatus">
-            <FormControlLabel value="all" control={<Radio />} label="all" />
-            <FormControlLabel
-              value="notInStock"
-              control={<Radio />}
-              label="Not in stock"
-            />
-            <FormControlLabel
-              value="inStock"
-              control={<Radio />}
-              label="In stock"
-            />
-          </RadioGroup>
-        </FormControl>
-
-        <Autocomplete
-          multiple
-          id="tags-outlined"
-          limitTags={2}
-          options={labels}
-          value={value}
-          onChange={(event, newValue) => {
-            handleMultipleSelection(newValue)
-          }}
-          getOptionLabel={(option) => option}
-          defaultValue={[labels[0]]}
-          filterSelectedOptions
-          renderInput={(params) => (
-            <TextField {...params} label="Labels" placeholder="Labels" />
-          )}
-        />
-      </form>
+            label="Toy Search"
+            variant="outlined"
+          />
+        </Stack>
+          <FormControl>
+            <FormLabel id="stock-status-radio-input">Stock Status</FormLabel>
+            <RadioGroup
+              onChange={handleChange}
+              row
+              defaultValue="all"
+              aria-labelledby="stock-status-radio-input"
+              name="stockStatus">
+              <FormControlLabel value="all" control={<Radio />} label="all" />
+              <FormControlLabel
+                value="notInStock"
+                control={<Radio />}
+                label="Not in stock"
+              />
+              <FormControlLabel
+                value="inStock"
+                control={<Radio />}
+                label="In stock"
+              />
+            </RadioGroup>
+          </FormControl>
+        <Stack>
+          <Autocomplete
+            multiple
+            id="tags-outlined"
+            limitTags={2}
+            options={labels}
+            value={value}
+            onChange={(event, newValue) => {
+              handleMultipleSelection(newValue)
+            }}
+            getOptionLabel={(option) => option}
+            defaultValue={[labels[0]]}
+            filterSelectedOptions
+            renderInput={(params) => (
+              <TextField {...params} label="Labels" placeholder="Labels" />
+            )}
+          />
+        </Stack>
+      </Box>
     </section>
   )
 }

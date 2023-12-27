@@ -55,12 +55,25 @@
   grid-column: 1/-1;
 } */
 
+.toy-filter-section{
+  display: flex;
+  justify-content: center;
+  margin: 1em 0;
+}
+
 .toy-list-section{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px ,1fr));
   align-items: center;
   justify-items: center;
 
-  gap: 2em;
-  margin-top: 2em;
+  gap: 1.25em;
+  padding: 1em;
+  margin: 1em;
+
+  background-color: var(--foreground);
+}
+
+.toy-index-page .preview-card{
+  background-color: #ffccbc;
 }
