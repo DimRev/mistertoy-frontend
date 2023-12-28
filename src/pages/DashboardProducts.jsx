@@ -16,11 +16,12 @@ export function DashboardProducts() {
   }
 
   function onDiff(type, diff, toy) {
+    console.log(type);
     let value = toy[type] + diff
     if (value < 0) {
       value = 0
       return
-    } else if (value > toy.stock) {
+    } else if (value > toy.stock && type === 'inventory') {
       value = toy.stock
       return
     }

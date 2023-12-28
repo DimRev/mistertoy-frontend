@@ -47,7 +47,6 @@ export async function removeToy(toyId) {
 export async function saveToy(toy) {
   const type = toy._id ? UPDATE_TOY : ADD_TOY
   const errType = toy._id ? 'update' : 'add'
-
   let toyToSave
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
   try {
