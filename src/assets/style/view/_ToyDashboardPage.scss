@@ -1,10 +1,23 @@
 .dashboard-page {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
-  justify-content: center;
-  margin: 1em;
-  .chart-wrapper{
-    width: 300px;
+  display: flex;
+  min-height: calc(100dvh - $headerHeight);
+  margin-top: 1em;
+
+  .dashboard-sidebar {
+    position: absolute;
+    left: 0;
+    top: $headerHeight;
+    bottom: 0;
+
+    width: 60px;
+
+    background-color: darken($secondary-dark, 10%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1em;
+    padding: 1em;
   }
 }

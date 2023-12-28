@@ -11,6 +11,8 @@ import { ToyEdit } from './pages/ToyEdit'
 import { AppHeader } from './cmps/AppHeader'
 import { AboutPage } from './pages/AboutPage'
 import { DashboardPage } from './pages/DashboardPage'
+import { DashboardAnalytics } from './pages/DashboardAnalytics'
+import { DashboardProducts } from './pages/DashboardProducts'
 
 export function App() {
   return (
@@ -21,7 +23,10 @@ export function App() {
           <Routes>
             <Route element={<HomePage />} path="/" />
             <Route element={<AboutPage />} path="/about" />
-            <Route element={<DashboardPage />} path="/dashboard" />
+            <Route element={<DashboardPage />} path="/dashboard" >
+              <Route element={<DashboardAnalytics />} path="/dashboard/analytics" />
+              <Route element={<DashboardProducts />} path="/dashboard/products" />
+            </Route>
             <Route element={<ToyIndex />} path="/toy" />
             <Route element={<ToyEdit />} path="/toy/edit/:toyId" />
             <Route element={<ToyDetails />} path="/toy/:toyId" />

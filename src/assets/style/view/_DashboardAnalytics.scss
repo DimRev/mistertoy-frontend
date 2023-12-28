@@ -1,0 +1,11 @@
+.dashboard-analytics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  justify-content: center;
+  margin: 1em;
+
+  .chart-wrapper {
+    width: 300px;
+  }
+}

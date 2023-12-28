@@ -31,11 +31,24 @@ const demoData = {
   },
 }
 
+import Axios from 'axios'
+import { utilService } from './util.service.js'
+import { httpService } from './http.service.js'
+import { storageService } from './async-storage.service.js'
+
+// for cookies
+const axios = Axios.create({
+  withCredentials: true,
+})
+
+const BASE_URL = 'dashboard/'
+const STORAGE_KEY = 'toyDB'
+
 export const dashboardService = {
   query,
 }
 
 function query(){
-
-  return Promise.resolve(demoData)
+  return httpService.get(BASE_URL)
+  // return Promise.resolve(demoData)
 }
