@@ -12,6 +12,7 @@ import Button from '@mui/material/Button'
 import { useState } from 'react'
 import { saveToy } from '../store/actions/toy.actions'
 import { useNavigate } from 'react-router-dom'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
 export function ToyPreviewEdit({ toy }) {
   const [selectedToy, setSelectedToy] = useState(toy)
@@ -45,11 +46,15 @@ export function ToyPreviewEdit({ toy }) {
     }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    saveToy(selectedToy).then(() => {
+    try {
+      await saveToy(selectedToy)
       navigate('/toy')
-    })
+      showSuccessMsg('Toy edited successfully')
+    } catch (err) {
+      showErrorMsg('Failed to edited toy')
+    }
   }
   if (!selectedToy) {
     return <h2>Loading</h2>
