@@ -21,7 +21,7 @@ function createEventEmitter() {
 export const eventBusService = createEventEmitter()
 
 export function showUserMsg(msg) {
-    eventBusService.emit('show-user-msg', msg)
+        eventBusService.emit('show-user-msg', msg)
 }
 export function showSuccessMsg(txt) {
     showUserMsg({txt, type: 'success'})
@@ -33,7 +33,7 @@ export function showErrorMsg(txt) {
 
 // Service Testing:
 
-// Example for using the service 
+// Example for using the service
 // eventBusService.on('some-event', (data)=>{
 //     console.log('Got some-event with data:', data)
 // })

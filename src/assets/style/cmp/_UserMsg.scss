@@ -1,0 +1,23 @@
+.user-msg{
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  padding: .5em;
+
+  &.success{
+    display: block;
+
+    background-color: $success;
+    color: $success-content;
+  }
+
+  &.error{
+    display: block;
+
+    background-color: $error;
+    color: $error-content;
+  }
+}
