@@ -12,54 +12,54 @@ import { SET_SORT } from '../reducers/toy.reducer'
 import { store } from '../store'
 
 // * TOY CRUD
-export function loadToys() {
+
+export async function loadToys() {
   const filterBy = store.getState().toyModule.filterBy
   const sortBy = store.getState().toyModule.sortBy
 
-
+  let toys
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-  return toyService
-    .query(filterBy,sortBy).then((toys) => {
-      store.dispatch({ type: SET_TOYS, toys })
-    })
-    .catch((err) => {
-      console.error('toy action -> cannot load toys', err)
-      throw err
-    })
-    .finally(() => {
-      store.dispatch({ type: SET_IS_LOADING, isLoading: false })
-    })
+  try {
+    toys = await toyService.query(filterBy, sortBy)
+    store.dispatch({ type: SET_TOYS, toys })
+  } catch (err) {
+    console.error('toy action -> cannot load toys', err)
+    throw err
+  } finally {
+    store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+    return toys
+  }
 }
 
-export function removeToy(toyId) {
+export async function removeToy(toyId) {
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-  return toyService
-    .remove(toyId)
-    .then(() => {
-      store.dispatch({ type: REMOVE_TOY, toyId })
-    })
-    .catch((err) => {
-      console.error('toy action -> cannot remove toy', err)
-      throw err
-    })
-    .finally(() => {
-      store.dispatch({ type: SET_IS_LOADING, isLoading: false })
-    })
+  try {
+    await toyService.remove(toyId)
+    store.dispatch({ type: REMOVE_TOY, toyId })
+  } catch (err) {
+    console.error('toy action -> cannot remove toy', err)
+    throw err
+  } finally {
+    store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+  }
 }
 
-export function saveToy(toy) {
+export async function saveToy(toy) {
   const type = toy._id ? UPDATE_TOY : ADD_TOY
   const errType = toy._id ? 'update' : 'add'
-  store.dispatch({ type: SET_IS_LOADING, isLoading: true})
-  return toyService.save(toy).then((toyToSave) => {
-    store.dispatch({ type, toy: toyToSave })
-    return toyToSave
-  }).catch((err) => {
-    console.error(`toy action -> cannot ${errType} toy`, err)
+
+  let toyToSave
+  store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+  try {
+    toyToSave = await toyService.save(toy)
+    store.dispatch({ type, toy: toyToSave})
+  } catch (err) {
+    console.error(`toy action -> cannot ${errType}`, err)
     throw err
-  }).finally(()=>{
-    store.dispatch({ type: SET_IS_LOADING, isLoading: false})
-  })
+  } finally {
+    store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+    return toyToSave
+  }
 }
 
 export function setFilter(filterBy) {
