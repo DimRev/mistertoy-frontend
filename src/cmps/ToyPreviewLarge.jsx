@@ -37,6 +37,7 @@ export function ToyPreviewLarge({ toy, onDelete }) {
                 <Chip
                   key={`${toy._id}${idx}`}
                   color="secondary"
+                  style={{ color: theme.palette.secondary.contrastText }}
                   size="small"
                   label={label}
                 />

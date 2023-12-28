@@ -1,6 +1,6 @@
 // LAYOUT
 $layoutPadding: 20px;
-$headerHeight: 120px;
+$headerHeight: 80px;
 
 // LAYOUT BREAKPOINTS
 $break-narrow: 420px;
@@ -12,32 +12,32 @@ $padded-break-normal: $break-normal + $layoutPadding * 2;
 $padded-break-wide: $break-wide + $layoutPadding * 2;
 
 // COLORS PALETTE
-$primary: #ed3a51;
+$primary: #ea1a5b;
 $primary-content: #ffffff;
-$primary-dark: #e0142f;
-$primary-light: #f1697a;
+$primary-dark: #bf1248;
+$primary-light: #ee497c;
 
-$secondary: #fef42b;
-$secondary-content: #2a2800;
-$secondary-dark: #f5e901;
-$secondary-light: #fef75e;
+$secondary: #ea3e1a;
+$secondary-content: #ffffff;
+$secondary-dark: #bf3012;
+$secondary-light: #ee6549;
+
+$background: #f5eaee;
+$foreground: #fdfafb;
+$border: #ead4db;
+
+$copy: #341921;
+$copy-light: #8a4259;
+$copy-lighter: #b4647d;
+
+$success: #1aea1a;
+$warning: #eaea1a;
+$error: #ea1a1a;
+$success-content: #000500;
+$warning-content: #050500;
+$error-content: #ffffff;
 
 $accent: #3ecf8e;
 $accent-content: #030b07;
 $accent-dark: #2baf74;
 $accent-light: #67d9a6;
-
-$background: #b6d6f5;
-$foreground: #47ab7e;
-
-$border: #404040;
-$copy: #fbfbfb;
-$copy-light: #d9d9d9;
-$copy-lighter: #a6a6a6;
-$success: #02ff02;
-$warning: #ffff02;
-$error: #ff0202;
-$success-content: #000200;
-$warning-content: #020200;
-$error-content: #ffffff;
-

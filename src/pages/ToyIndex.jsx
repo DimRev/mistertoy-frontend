@@ -15,13 +15,19 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#ed3a51',
+      main: '#ea1a5b',
+      contrastText: '#ffffff', // Text color for primary
+      dark: '#bf1248',
+      light: '#ee497c',
     },
     secondary: {
-      main: '#fef42b',
+      main: '#ea3e1a',
+      contrastText: '#ffffff', // Text color for secondary
+      dark: '#bf3012',
+      light: '#ee6549',
     },
   },
-})
+});
 
 export function ToyIndex() {
   const toys = useSelector((storeState) => storeState.toyModule.toys)

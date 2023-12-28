@@ -21,7 +21,7 @@ export function LoginForm({ onLogin, isSignup }) {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <Stack direction="row" spacing={3}>
+      <Stack direction="column" gap={3} spacing={3}>
         <Input
           type="text"
           name="username"

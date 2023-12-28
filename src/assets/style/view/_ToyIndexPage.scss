@@ -18,9 +18,9 @@
       gap: 0.4em;
       padding: 0.5em;
       margin: 0.9em;
-      .preview-card {
-        width: clamp(240px, 60vw, 380px);
-      }
+      // .preview-card {
+      //   width: clamp(240px, 60vw, 380px);
+      // }
     }
 
     @include for-normal-layout {
@@ -28,9 +28,9 @@
       gap: 0.3em;
       padding: 0.5em;
       margin: 0.9em;
-      .preview-card {
-        width: clamp(180px, 40vw, 380px);
-      }
+      // .preview-card {
+      //   width: clamp(180px, 40vw, 380px);
+      // }
     }
 
     @include for-wide-layout {
@@ -38,18 +38,21 @@
       gap: 0.5em;
       padding: 0.5em;
       margin: 1em;
-      .preview-card {
-        width: clamp(240px, 27vw, 300px);
-      }
+      // .preview-card {
+      //   width: clamp(240px, 27vw, 300px);
+      // }
     }
   }
 }
 
 .toy-index-page .preview-card {
-  background-color: $accent;
+  background-color: $primary-dark;
+  color: $primary-content;
+
+  width: 90%;
 
   display: grid;
-  justify-content: space-between;
+  justify-content: center;
   align-content: space-between;
 
   img {

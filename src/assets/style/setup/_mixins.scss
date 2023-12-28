@@ -30,3 +30,48 @@
     minmax(auto, $max)
     minmax($layoutPadding, 1fr);
 }
+
+// Mixin for button style
+@mixin button-style($button-type, $button-size, $button-color) {
+  // Shared styles for all button types
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  // Size options
+  @if $button-size == 'small' {
+    padding: 8px;
+    font-size: 0.75rem;
+  } @else if $button-size == 'medium' {
+    padding: 12px;
+    font-size: 1rem;
+  } @else if $button-size == 'large' {
+    padding: 16px;
+    font-size: 1.25rem;
+  }
+
+  // Set color variables based on button color
+  $bg-color: null;
+  $text-color: #fff;
+
+  @if $button-color == 'primary' {
+    $bg-color: $primary-color;
+  } @else if $button-color == 'secondary' {
+    $bg-color: $secondary-color;
+  }
+
+  // Style variations based on button type
+  @if $button-type == 'icon' {
+    background-color: $bg-color;
+    color: $text-color;
+  } @else if $button-type == 'text' {
+    background-color: transparent;
+    color: $bg-color;
+  } @else if $button-type == 'contained' {
+    background-color: $bg-color;
+    color: $text-color;
+  }
+}
