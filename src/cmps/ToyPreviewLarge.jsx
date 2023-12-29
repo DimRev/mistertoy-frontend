@@ -7,6 +7,7 @@ import { Button, CardActionArea, CardActions, Chip, Stack } from '@mui/material'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import useAdminRedirect from '../../hooks/useAdminRedirect'
+import { useSelector } from 'react-redux'
 
 const theme = createTheme({
   palette: {
@@ -27,6 +28,9 @@ const theme = createTheme({
 
 export function ToyPreviewLarge({ toy, onDelete }) {
   const isAdmin = useAdminRedirect(false)
+  const user = useSelector((storeState) => storeState.userModule.loggedinUser)
+  const isOwner = toy?.owner?._id === user?._id
+
 
   return (
     <Card className="preview-card" sx={{ maxWidth: 1 }}>
@@ -66,12 +70,12 @@ export function ToyPreviewLarge({ toy, onDelete }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          {isAdmin && (
+          {(isAdmin || isOwner) && (
             <Button variant="outlined" onClick={() => onDelete(toy._id)}>
               Delete
             </Button>
           )}
-          {isAdmin && (
+          {(isAdmin || isOwner) && (
             <Link to={`/toy/edit/${toy._id}`}>
               <Button variant="outlined">Edit</Button>
             </Link>
