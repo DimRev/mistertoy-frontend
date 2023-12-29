@@ -94,11 +94,9 @@ function remove(toyId) {
 
 function save(toy) {
   if (toy._id) {
-    console.log('test')
     // return storageService.put(STORAGE_KEY, toy)
     return httpService.put(BASE_URL, toy)
   } else {
-    console.log('test');
     // return storageService.post(STORAGE_KEY, toy)
     return httpService.post(BASE_URL, toy)
   }
