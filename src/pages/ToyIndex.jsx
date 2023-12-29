@@ -4,14 +4,13 @@ import Button from '@mui/material/Button'
 
 import { ToyList } from '../cmps/ToyIndexCmps/ToyList'
 
-import { loadToys, removeToy, saveToy } from '../store/actions/toy.actions'
-import { toyService } from '../services/toy.service'
+import { addToy, loadToys, removeToy } from '../store/actions/toy.actions'
 import { ToyFilter } from '../cmps/ToyIndexCmps/ToyFilter'
 import { ToySort } from '../cmps/ToyIndexCmps/ToySort'
-import { TestCmps } from '../cmps/testCmps'
 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Stack } from '@mui/material'
+import { showSuccessMsg } from '../services/event-bus.service'
 
 const theme = createTheme({
   palette: {
@@ -28,21 +27,26 @@ const theme = createTheme({
       light: '#ee6549',
     },
   },
-});
+})
 
 export function ToyIndex() {
   const toys = useSelector((storeState) => storeState.toyModule.toys)
   const isLoading = useSelector((storeState) => storeState.toyModule.isLoading)
   const filterBy = useSelector((storeState) => storeState.toyModule.filterBy)
   const sortBy = useSelector((storeState) => storeState.toyModule.sortBy)
+  const user = useSelector((storeState) => storeState.userModule.loggedinUser)
 
   useEffect(() => {
     loadToys()
   }, [filterBy, sortBy])
 
-  function onAdd() {
-    const toy = toyService.getEmptyToy()
-    saveToy(toy)
+  async function onAdd() {
+    try {
+      await addToy(user)
+      showSuccessMsg('Toy added successfully')
+    } catch (err) {
+      showSuccessMsg('Error adding the toy')
+    }
   }
 
   function onDelete(toyId) {
@@ -53,14 +57,15 @@ export function ToyIndex() {
     <section className="page toy-index-page">
       <ThemeProvider theme={theme}>
         <ToyFilter />
-        {/* <TestCmps /> */}
-        <Stack margin={2} direction="row" spacing={2} >
+        <Stack margin={2} direction="row" spacing={2}>
           <ToySort />
-          <Button variant="text" onClick={onAdd}>
-            Add toy
-          </Button>
+          {user && (
+            <Button variant="text" onClick={onAdd}>
+              Add toy
+            </Button>
+          )}
         </Stack>
-        <ToyList toys={toys} onDelete={onDelete} isLoading={isLoading}/>
+        <ToyList toys={toys} onDelete={onDelete} isLoading={isLoading} />
       </ThemeProvider>
     </section>
   )
