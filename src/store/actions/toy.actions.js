@@ -54,7 +54,7 @@ export async function addToy(user){
 export async function saveToy(toy) {
   const type = toy._id ? UPDATE_TOY : ADD_TOY
   const errType = toy._id ? 'update' : 'add'
-  let toyToSave
+  let toyToSave = {...toy}
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
   try {
     toyToSave = await toyService.save(toy)
