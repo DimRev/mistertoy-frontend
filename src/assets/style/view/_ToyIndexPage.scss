@@ -12,6 +12,11 @@
     border-radius: 7px;
     grid-template-columns: repeat(auto-fill, 380px);
 
+    svg{
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
     @include for-narrow-layout {
       grid-template-columns: repeat(auto-fill, 380px);
       gap: 0.4em;

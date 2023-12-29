@@ -9,7 +9,6 @@ import useAdminRedirect from '../../hooks/useAdminRedirect'
 
 export function ToyPreview({ toy, onDelete }) {
   const isAdmin = useAdminRedirect(false)
-
   return (
     <Card className="preview-card" sx={{ placeSelf: 'center', height: 500 }}>
       <CardActionArea>

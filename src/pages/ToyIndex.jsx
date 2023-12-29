@@ -32,6 +32,7 @@ const theme = createTheme({
 
 export function ToyIndex() {
   const toys = useSelector((storeState) => storeState.toyModule.toys)
+  const isLoading = useSelector((storeState) => storeState.toyModule.isLoading)
   const filterBy = useSelector((storeState) => storeState.toyModule.filterBy)
   const sortBy = useSelector((storeState) => storeState.toyModule.sortBy)
 
@@ -59,7 +60,7 @@ export function ToyIndex() {
             Add toy
           </Button>
         </Stack>
-        <ToyList toys={toys} onDelete={onDelete} />
+        <ToyList toys={toys} onDelete={onDelete} isLoading={isLoading}/>
       </ThemeProvider>
     </section>
   )

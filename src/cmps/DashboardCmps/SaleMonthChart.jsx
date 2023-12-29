@@ -66,45 +66,54 @@ export function SaleMonthChart() {
 
         borderColor: '#89541b',
         backgroundColor: '#89541b66',
+        hidden: true,
       },
       {
         label: 'Art',
         data: [12, 39, 20, 83, 50, 17, 88, 3, 74, 9, 45, 28],
         borderColor: '#32c8d9',
         backgroundColor: '#32c8d966',
+        hidden: true,
       },
       {
         label: 'Baby',
         data: [64, 32, 55, 18, 91, 5, 76, 40, 83, 27, 69, 12],
         borderColor: '#82be75',
         backgroundColor: '#82be7566',
+        hidden: true,
       },
       {
         label: 'Doll',
         data: [35, 67, 21, 96, 48, 13, 79, 54, 8, 40, 71, 2],
         borderColor: '#11b9b1',
         backgroundColor: '#11b9b166',
+        hidden: true,
       },
       {
         label: 'Puzzle',
         data: [60, 14, 78, 23, 51, 9, 46, 32, 85, 5, 68, 37],
         borderColor: '#be2e8f',
         backgroundColor: '#be2e8f66',
+        hidden: true,
       },
       {
         label: 'Outdoor',
         data: [13, 82, 47, 26, 69, 38, 61, 5, 94, 20, 73, 11],
         borderColor: '#c555db',
         backgroundColor: '#c555db66',
+        hidden: true,
       },
       {
         label: 'Battery Powered',
         data: [89, 26, 71, 42, 10, 57, 34, 95, 18, 63, 7, 50],
         borderColor: '#4a2644',
         backgroundColor: '#4a264466',
+        hidden: true,
       },
     ],
   })
+
+
 
   //! Connect to real data from DB using the function below
   //TODO Write demo sales data
