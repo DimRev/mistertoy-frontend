@@ -5,13 +5,32 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Button, CardActionArea, CardActions, Chip, Stack } from '@mui/material'
 
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ea1a5b',
+      contrastText: '#ffffff', // Text color for primary
+      dark: '#bf1248',
+      light: '#ee497c',
+    },
+    secondary: {
+      main: '#ea3e1a',
+      contrastText: '#ffffff', // Text color for secondary
+      dark: '#bf3012',
+      light: '#ee6549',
+    },
+  },
+})
 
 export function ToyPreviewLarge({ toy, onDelete }) {
   const location = useLocation()
-  const isEditingToy = location.pathname.startsWith('/toy/edit');
+  const isEditingToy = location.pathname.startsWith('/toy/edit')
   return (
-      <Card className='preview-card' sx={{ maxWidth: 1 }}>
-        <CardActionArea >
+    <Card className="preview-card" sx={{ maxWidth: 1 }}>
+      <ThemeProvider theme={theme}>
+        <CardActionArea>
           <CardMedia
             component="img"
             height="300"
@@ -56,6 +75,7 @@ export function ToyPreviewLarge({ toy, onDelete }) {
             <Button variant="outlined">Details</Button>
           </Link>
         </CardActions>
-      </Card>
+      </ThemeProvider>
+    </Card>
   )
 }

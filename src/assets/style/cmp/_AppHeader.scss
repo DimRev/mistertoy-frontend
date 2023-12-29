@@ -1,14 +1,20 @@
 .app-header {
   z-index: 10;
+  display: flex;
   height: $headerHeight;
   justify-content: space-between;
   align-items: center;
 
   background-color: $primary-dark;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .3);
+
+  .mobile-nav{
+    margin: 1em;
+    gap: 1em;
+  }
 
   .header-nav {
-    justify-self: end;
-    display: flex;
+    display: none;
 
     margin: 1em;
     gap: 1em;
@@ -18,5 +24,37 @@
         background-color: orangered;
       }
     }
+  }
+
+  .user-section {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    margin: 1em;
+    gap: 1em;
+
+    color: $primary-content;
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 1.2em;
+  }
+
+  @include for-narrow-layout {
+
+  }
+
+  @include for-normal-layout {
+    .mobile-nav{
+      display: none;
+    }
+    .header-nav{
+      display: flex;
+    }
+    justify-content: space-between;
+  }
+
+  @include for-wide-layout {
+
   }
 }

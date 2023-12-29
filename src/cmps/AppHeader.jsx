@@ -5,6 +5,8 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { Button, ThemeProvider, createTheme } from '@mui/material'
 import { UserMsg } from './UserMsg'
 import { logout } from '../store/actions/user.actions'
+import MenuIcon from '@mui/icons-material/Menu'
+import { useState } from 'react'
 
 const theme = createTheme({
   palette: {
@@ -21,9 +23,10 @@ const theme = createTheme({
       light: '#ee6549',
     },
   },
-});
+})
 
 export function AppHeader() {
+  const [isShowModal, setIsShowModal] = useState(false)
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
   const navigate = useNavigate()
 
@@ -37,33 +40,54 @@ export function AppHeader() {
     }
   }
 
+  function showModal() {
+    setIsShowModal((prevIsShowModal) => !prevIsShowModal)
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <header className="app-header full main-layout">
+        <nav className='mobile-nav'>
+          <Button color="secondary" variant="contained">
+            <MenuIcon />
+          </Button>
+        </nav>
         <nav className="header-nav">
           <NavLink className="nav-link-btn" to="/">
-            <Button variant="text" color="secondary" style={{ color: theme.palette.secondary.contrastText }}>
+            <Button
+              variant="text"
+              color="secondary"
+              style={{ color: theme.palette.secondary.contrastText }}>
               Home
             </Button>
           </NavLink>
           <NavLink className="nav-link-btn" to="/about">
-            <Button variant="text" color="secondary" style={{ color: theme.palette.secondary.contrastText }}>
+            <Button
+              variant="text"
+              color="secondary"
+              style={{ color: theme.palette.secondary.contrastText }}>
               About
             </Button>
           </NavLink>
-          <NavLink className="nav-link-btn" to="/dashboard">
-            <Button variant="text" color="secondary" style={{ color: theme.palette.secondary.contrastText }}>
+          <NavLink className="nav-link-btn" to="/dashboard/analytics">
+            <Button
+              variant="text"
+              color="secondary"
+              style={{ color: theme.palette.secondary.contrastText }}>
               Dashboard
             </Button>
           </NavLink>
           <NavLink className="nav-link-btn" to="/toy">
-            <Button variant="text" color="secondary" style={{ color: theme.palette.secondary.contrastText }}>
+            <Button
+              variant="text"
+              color="secondary"
+              style={{ color: theme.palette.secondary.contrastText }}>
               Toys
             </Button>
           </NavLink>
         </nav>
         {user ? (
-          <section>
+          <section className="user-section">
             <span to={`/user/${user._id}`}>
               Hello {user.fullname} <span>${user.score.toLocaleString()}</span>
             </span>
@@ -73,7 +97,14 @@ export function AppHeader() {
             </Button>
           </section>
         ) : (
-          <LoginSignup />
+          <>
+            <section className="user-section">
+              <Button variant="contained" onClick={showModal}>
+                Login
+              </Button>
+            </section>
+            <LoginSignup isShowModal={isShowModal} showModal={showModal} />
+          </>
         )}
       </header>
       <UserMsg />

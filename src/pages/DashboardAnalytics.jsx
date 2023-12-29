@@ -1,6 +1,6 @@
 import React from 'react'
 import { PriceLabelChart } from '../cmps/DashboardCmps/priceLabelChart'
-import { InventoryLabelChart } from '../cmps/DashboardCmps/inventoryLabelChart'
+import { InventoryLabelChart } from '../cmps/DashboardCmps/InventoryLabelChart'
 export function DashboardAnalytics({}) {
   return (
     <section className='dashboard-analytics'>

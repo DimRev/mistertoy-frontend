@@ -21,12 +21,11 @@ const theme = createTheme({
 export function DashboardPage() {
   return (
     <ThemeProvider theme={theme} >
-      <section className="dashboard-page">
+      <section className="dashboard-page full">
       <section className='dashboard-sidebar'>
         <section className="nav-section">
           <NavLink to={'/dashboard/analytics'}><Button variant='outlined' color='secondary' style={{ color: theme.palette.secondary.contrastText }}>Analytics</Button></NavLink>
           <NavLink to={'/dashboard/products'}><Button variant='outlined' color='secondary' style={{ color: theme.palette.secondary.contrastText }}>Products</Button></NavLink>
-          <NavLink><Button variant='outlined' color='secondary' style={{ color: theme.palette.secondary.contrastText }}>Analytics</Button></NavLink>
         </section>
       </section>
         <main>
