@@ -51,27 +51,29 @@ export function DashboardProducts() {
         component={Paper}>
         <Table stickyHeader>
           <TableHead>
-            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
-              <Typography fontWeight="600">Name</Typography>
-            </TableCell>
-            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
-              <Typography fontWeight="600">Price</Typography>
-            </TableCell>
-            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
-              <Typography fontWeight="600">Created</Typography>
-            </TableCell>
-            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
-              <Typography fontWeight="600">Labels</Typography>
-            </TableCell>
-            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
-              <Typography fontWeight="600">Inventory</Typography>
-            </TableCell>
-            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
-              <Typography fontWeight="600">Stock</Typography>
-            </TableCell>
-            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
-              <Typography fontWeight="600">In Stock</Typography>
-            </TableCell>
+            <TableRow>
+              <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+                <Typography fontWeight="600">Name</Typography>
+              </TableCell>
+              <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+                <Typography fontWeight="600">Price</Typography>
+              </TableCell>
+              <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+                <Typography fontWeight="600">Created</Typography>
+              </TableCell>
+              <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+                <Typography fontWeight="600">Labels</Typography>
+              </TableCell>
+              <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+                <Typography fontWeight="600">Inventory</Typography>
+              </TableCell>
+              <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+                <Typography fontWeight="600">Stock</Typography>
+              </TableCell>
+              <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+                <Typography fontWeight="600">In Stock</Typography>
+              </TableCell>
+            </TableRow>
           </TableHead>
           <TableBody>
             {toys.map((toy) => (
