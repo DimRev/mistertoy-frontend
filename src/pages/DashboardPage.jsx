@@ -1,6 +1,7 @@
 import { Button, ThemeProvider, createTheme } from '@mui/material'
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import useAdminRedirect from '../../hooks/useAdminRedirect'
+import { useEffect } from 'react'
 
 const theme = createTheme({
   palette: {
@@ -20,8 +21,13 @@ const theme = createTheme({
 })
 
 export function DashboardPage() {
-  const isAdmin = useAdminRedirect(true, '/' ,'./analytics')
-  if(!isAdmin) return <></>
+  const isAdmin = useAdminRedirect(true, '/', false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (location.pathname === '/dashboard') navigate('./analytics')
+  }, [])
+  if (!isAdmin) return <></>
   return (
     <ThemeProvider theme={theme}>
       <section className="page dashboard-page full">
