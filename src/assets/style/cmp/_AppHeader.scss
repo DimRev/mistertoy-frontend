@@ -14,6 +14,50 @@
   .mobile-nav{
     margin: 1em;
     gap: 1em;
+    .menu {
+      overflow: hidden;
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      translate: -50%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: 100%;
+      height: fit-content;
+
+      background-color: $primary-dark;
+      box-shadow: 0px 5px 3px 2px rgba(0, 0, 0, .3);
+
+      gap: 1em;
+      margin-top: calc($headerHeight);
+      margin-left: 50%;
+
+      .nav-link-btn {
+        width: 100%;
+        Button {
+          padding: 1em;
+          width: 100%;
+        }
+      }
+      .nav-link-btn.active{
+        background-color: orangered;
+      }
+      &.open{
+        animation: openMenu .6s ease;
+        animation-fill-mode: forwards;
+
+      }
+      &.close{
+        animation: closeMenu .6s ease;
+        animation-fill-mode: forwards;
+      }
+    }
   }
 
   .header-nav {
@@ -59,5 +103,31 @@
 
   @include for-wide-layout {
 
+  }
+}
+
+@keyframes openMenu {
+  from {
+    transform-origin: top;
+    display: none;
+    height: 0px;
+  }
+  to{
+    transform-origin: top;
+    height: 270px;
+    display: flex;
+  }
+}
+
+@keyframes closeMenu {
+  from {
+    transform-origin: top;
+    height: 270px;
+    display: flex;
+  }
+  to {
+    transform-origin: top;
+    height: 0;
+    display: none;
   }
 }

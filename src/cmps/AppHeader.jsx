@@ -26,6 +26,7 @@ const theme = createTheme({
 })
 
 export function AppHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isShowModal, setIsShowModal] = useState(false)
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
   const navigate = useNavigate()
@@ -47,10 +48,61 @@ export function AppHeader() {
   return (
     <ThemeProvider theme={theme}>
       <header className="app-header full main-layout">
-        <nav className='mobile-nav'>
-          <Button color="secondary" variant="contained">
+        <nav className="mobile-nav">
+          <Button
+            color="secondary"
+            variant="contained"
+            onClick={() => {
+              setIsMenuOpen((p) => !p)
+            }}>
             <MenuIcon />
           </Button>
+          <div className={`menu ${isMenuOpen ? 'open' : 'close'}`}>
+            <NavLink className="nav-link-btn" to="/">
+              <Button
+                onClick={() => {
+                  setIsMenuOpen(false)
+                }}
+                variant="text"
+                color="secondary"
+                style={{ color: theme.palette.secondary.contrastText }}>
+                Home
+              </Button>
+            </NavLink>
+            <NavLink className="nav-link-btn" to="/about">
+              <Button
+                onClick={() => {
+                  setIsMenuOpen(false)
+                }}
+                variant="text"
+                color="secondary"
+                style={{ color: theme.palette.secondary.contrastText }}>
+                About
+              </Button>
+            </NavLink>
+            <NavLink className="nav-link-btn" to="/dashboard/analytics">
+              <Button
+                onClick={() => {
+                  setIsMenuOpen(false)
+                }}
+                variant="text"
+                color="secondary"
+                style={{ color: theme.palette.secondary.contrastText }}>
+                Dashboard
+              </Button>
+            </NavLink>
+            <NavLink className="nav-link-btn" to="/toy">
+              <Button
+                onClick={() => {
+                  setIsMenuOpen(false)
+                }}
+                variant="text"
+                color="secondary"
+                style={{ color: theme.palette.secondary.contrastText }}>
+                Toys
+              </Button>
+            </NavLink>
+          </div>
         </nav>
         <nav className="header-nav">
           <NavLink className="nav-link-btn" to="/">
