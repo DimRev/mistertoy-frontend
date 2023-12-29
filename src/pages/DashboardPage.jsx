@@ -1,6 +1,4 @@
 import { Button, ThemeProvider, createTheme } from '@mui/material'
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import useAdminRedirect from '../../hooks/useAdminRedirect'
 
@@ -22,8 +20,8 @@ const theme = createTheme({
 })
 
 export function DashboardPage() {
-  const isAdmin = useAdminRedirect()
-  if(isAdmin) return <></>
+  const isAdmin = useAdminRedirect(true, '/' ,'./analytics')
+  if(!isAdmin) return <></>
   return (
     <ThemeProvider theme={theme}>
       <section className="page dashboard-page full">

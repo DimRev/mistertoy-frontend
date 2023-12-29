@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
@@ -26,7 +26,6 @@ const theme = createTheme({
 })
 
 export function ToyPreviewLarge({ toy, onDelete }) {
-  const location = useLocation()
   const isAdmin = useAdminRedirect(false)
 
   return (
