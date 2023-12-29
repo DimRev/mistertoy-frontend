@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import { Button, CardActionArea, CardActions, Chip, Stack } from '@mui/material'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import useAdminRedirect from '../../hooks/useAdminRedirect'
 
 const theme = createTheme({
   palette: {
@@ -26,7 +27,8 @@ const theme = createTheme({
 
 export function ToyPreviewLarge({ toy, onDelete }) {
   const location = useLocation()
-  const isEditingToy = location.pathname.startsWith('/toy/edit')
+  const isAdmin = useAdminRedirect(false)
+
   return (
     <Card className="preview-card" sx={{ maxWidth: 1 }}>
       <ThemeProvider theme={theme}>
@@ -34,7 +36,7 @@ export function ToyPreviewLarge({ toy, onDelete }) {
           <CardMedia
             component="img"
             height="300"
-            image={`../../public/${toy.img}`}
+            image={`/${toy.img}`}
             alt="green iguana"
           />
           <CardContent>
@@ -65,14 +67,18 @@ export function ToyPreviewLarge({ toy, onDelete }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button variant="outlined" onClick={() => onDelete(toy._id)}>
-            Delete
-          </Button>
-          <Link to={`/toy/edit/${toy._id}`}>
-            <Button variant="outlined">Edit</Button>
-          </Link>
-          <Link to={`/toy/${toy._id}`}>
-            <Button variant="outlined">Details</Button>
+          {isAdmin && (
+            <Button variant="outlined" onClick={() => onDelete(toy._id)}>
+              Delete
+            </Button>
+          )}
+          {isAdmin && (
+            <Link to={`/toy/edit/${toy._id}`}>
+              <Button variant="outlined">Edit</Button>
+            </Link>
+          )}
+          <Link to={`../../toy`}>
+            <Button variant="outlined">Back</Button>
           </Link>
         </CardActions>
       </ThemeProvider>

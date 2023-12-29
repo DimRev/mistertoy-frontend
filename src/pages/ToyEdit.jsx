@@ -4,6 +4,7 @@ import { toyService } from '../services/toy.service'
 import { ToyPreviewEdit } from '../cmps/ToyPreviewEdit'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import useAdminRedirect from '../../hooks/useAdminRedirect'
 
 const theme = createTheme({
   palette: {
@@ -30,8 +31,9 @@ export function ToyEdit() {
       setSelectedToy(toy)
     })
   }, [])
-  if (!selectedToy) {
-    return <h1>Loading</h1>
+  const isAdmin = useAdminRedirect()
+  if (!selectedToy || !isAdmin) {
+    return <></>
   }
   return (
     <section className="page toy-edit-page">

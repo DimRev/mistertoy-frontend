@@ -5,11 +5,14 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Button, CardActionArea, CardActions, Chip, Stack } from '@mui/material'
 import { utilService } from '../services/util.service'
+import useAdminRedirect from '../../hooks/useAdminRedirect'
 
 export function ToyPreview({ toy, onDelete }) {
+  const isAdmin = useAdminRedirect(false)
+
   return (
-    <Card className="preview-card" sx={{ placeSelf:'center' ,height: 500 }}>
-      <CardActionArea >
+    <Card className="preview-card" sx={{ placeSelf: 'center', height: 500 }}>
+      <CardActionArea>
         <CardMedia
           component="img"
           height="300"
@@ -21,7 +24,10 @@ export function ToyPreview({ toy, onDelete }) {
             <Typography gutterBottom variant="h5" component="div">
               {toy.name}
             </Typography>
-            <Chip color={toy.inStock ? "success" : "error"} label={`$${toy.price}`}/>
+            <Chip
+              color={toy.inStock ? 'success' : 'error'}
+              label={`$${toy.price}`}
+            />
           </Stack>
           <Stack direction="row" gap={0.2} flexWrap="wrap">
             {toy.labels.map((label, idx) => (
@@ -38,12 +44,16 @@ export function ToyPreview({ toy, onDelete }) {
       <CardActions
         className="btn-container"
         sx={{ justifyContent: 'space-between' }}>
-        <Button variant="contained" onClick={() => onDelete(toy._id)}>
-          Delete
-        </Button>
-        <Link to={`/toy/edit/${toy._id}`}>
-          <Button variant="contained">Edit</Button>
-        </Link>
+        {isAdmin && (
+          <Button variant="contained" onClick={() => onDelete(toy._id)}>
+            Delete
+          </Button>
+        )}
+        {isAdmin && (
+          <Link to={`/toy/edit/${toy._id}`}>
+            <Button variant="contained">Edit</Button>
+          </Link>
+        )}
         <Link to={`/toy/${toy._id}`}>
           <Button variant="contained">Details</Button>
         </Link>
