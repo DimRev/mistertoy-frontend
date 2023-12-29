@@ -57,7 +57,11 @@ export function AppHeader() {
             onClick={() => {
               setIsMenuOpen((p) => !p)
             }}>
-            {isMenuOpen ? <Close className='icon'/> : <MenuIcon className='icon'/>}
+            {isMenuOpen ? (
+              <Close className="icon" />
+            ) : (
+              <MenuIcon className="icon" />
+            )}
           </Button>
           <div className={`menu ${isMenuOpen ? 'open' : 'close'}`}>
             <NavLink className="nav-link-btn" to="/">
@@ -82,17 +86,19 @@ export function AppHeader() {
                 About
               </Button>
             </NavLink>
-            <NavLink className="nav-link-btn" to="/dashboard/analytics">
-              <Button
-                onClick={() => {
-                  setIsMenuOpen(false)
-                }}
-                variant="text"
-                color="secondary"
-                style={{ color: theme.palette.secondary.contrastText }}>
-                Dashboard
-              </Button>
-            </NavLink>
+            {user?.isAdmin && (
+              <NavLink className="nav-link-btn" to="/dashboard">
+                <Button
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                  }}
+                  variant="text"
+                  color="secondary"
+                  style={{ color: theme.palette.secondary.contrastText }}>
+                  Dashboard
+                </Button>
+              </NavLink>
+            )}
             <NavLink className="nav-link-btn" to="/toy">
               <Button
                 onClick={() => {
@@ -123,14 +129,16 @@ export function AppHeader() {
               About
             </Button>
           </NavLink>
-          <NavLink className="nav-link-btn" to="/dashboard/analytics">
-            <Button
-              variant="text"
-              color="secondary"
-              style={{ color: theme.palette.secondary.contrastText }}>
-              Dashboard
-            </Button>
-          </NavLink>
+          {user?.isAdmin && (
+            <NavLink className="nav-link-btn" to="/dashboard">
+              <Button
+                variant="text"
+                color="secondary"
+                style={{ color: theme.palette.secondary.contrastText }}>
+                Dashboard
+              </Button>
+            </NavLink>
+          )}
           <NavLink className="nav-link-btn" to="/toy">
             <Button
               variant="text"
