@@ -94,9 +94,11 @@ function remove(toyId) {
 
 function save(toy) {
   if (toy._id) {
+    console.log('test')
     // return storageService.put(STORAGE_KEY, toy)
     return httpService.put(BASE_URL, toy)
   } else {
+    console.log('test');
     // return storageService.post(STORAGE_KEY, toy)
     return httpService.post(BASE_URL, toy)
   }
@@ -107,6 +109,8 @@ function getEmptyToy() {
     name: utilService.makeLorem(2),
     price: utilService.getRandomIntInclusive(10, 200),
     labels: [],
+    inventory: 100,
+    stock: 100,
     createdAt: Date.now(),
     inStock: true,
   }
