@@ -6,9 +6,13 @@ import Typography from '@mui/material/Typography'
 import { Button, CardActionArea, CardActions, Chip, Stack } from '@mui/material'
 import { utilService } from '../services/util.service'
 import useAdminRedirect from '../../hooks/useAdminRedirect'
+import { useSelector } from 'react-redux'
 
 export function ToyPreview({ toy, onDelete }) {
+  const user = useSelector((storeState) => storeState.userModule.loggedinUser)
   const isAdmin = useAdminRedirect(false)
+  const isOwner = user?._id === toy?.owner?._id
+
   return (
     <Card className="preview-card" sx={{ placeSelf: 'center', height: 500 }}>
       <CardActionArea>
@@ -43,12 +47,12 @@ export function ToyPreview({ toy, onDelete }) {
       <CardActions
         className="btn-container"
         sx={{ justifyContent: 'space-between' }}>
-        {isAdmin && (
+        {(isAdmin || isOwner) && (
           <Button variant="contained" onClick={() => onDelete(toy._id)}>
             Delete
           </Button>
         )}
-        {isAdmin && (
+        {(isAdmin || isOwner) && (
           <Link to={`/toy/edit/${toy._id}`}>
             <Button variant="contained">Edit</Button>
           </Link>
