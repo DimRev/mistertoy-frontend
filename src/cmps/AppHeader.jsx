@@ -7,6 +7,7 @@ import { UserMsg } from './UserMsg'
 import { logout } from '../store/actions/user.actions'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from 'react'
+import { Close } from '@mui/icons-material'
 
 const theme = createTheme({
   palette: {
@@ -50,12 +51,13 @@ export function AppHeader() {
       <header className="app-header full main-layout">
         <nav className="mobile-nav">
           <Button
+            className={`hamburger-btn ${isMenuOpen ? 'open' : 'close'}`}
             color="secondary"
             variant="contained"
             onClick={() => {
               setIsMenuOpen((p) => !p)
             }}>
-            <MenuIcon />
+            {isMenuOpen ? <Close className='icon'/> : <MenuIcon className='icon'/>}
           </Button>
           <div className={`menu ${isMenuOpen ? 'open' : 'close'}`}>
             <NavLink className="nav-link-btn" to="/">

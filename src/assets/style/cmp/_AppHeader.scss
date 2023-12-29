@@ -9,11 +9,19 @@
   align-items: center;
 
   background-color: $primary-dark;
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .3);
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
 
-  .mobile-nav{
+  .mobile-nav {
     margin: 1em;
     gap: 1em;
+
+    .hamburger-btn.open .icon{
+      animation: changeMenuIcon .6s linear;
+    }
+    .hamburger-btn.close .icon{
+      animation: changeMenuIcon .6s ease;
+    }
+
     .menu {
       overflow: hidden;
       position: absolute;
@@ -32,7 +40,7 @@
       height: fit-content;
 
       background-color: $primary-dark;
-      box-shadow: 0px 5px 3px 2px rgba(0, 0, 0, .3);
+      box-shadow: 0px 5px 3px 2px rgba(0, 0, 0, 0.3);
 
       gap: 1em;
       margin-top: calc($headerHeight);
@@ -45,16 +53,15 @@
           width: 100%;
         }
       }
-      .nav-link-btn.active{
+      .nav-link-btn.active {
         background-color: orangered;
       }
-      &.open{
-        animation: openMenu .6s ease;
+      &.open {
+        animation: openMenu 0.6s ease;
         animation-fill-mode: forwards;
-
       }
-      &.close{
-        animation: closeMenu .6s ease;
+      &.close {
+        animation: closeMenu 0.6s ease;
         animation-fill-mode: forwards;
       }
     }
@@ -88,21 +95,36 @@
   }
 
   @include for-narrow-layout {
-
   }
 
   @include for-normal-layout {
-    .mobile-nav{
+    .mobile-nav {
       display: none;
     }
-    .header-nav{
+    .header-nav {
       display: flex;
     }
     justify-content: space-between;
   }
 
   @include for-wide-layout {
+  }
+}
 
+@keyframes changeMenuIcon {
+  from {
+    scale: 1;
+  }
+  30%{
+    scale: 0;
+    translate: -30px;
+  }
+  70%{
+    scale: 0;
+    translate: 30px;
+  }
+  to {
+    scale: 1;
   }
 }
 
@@ -112,7 +134,7 @@
     display: none;
     height: 0px;
   }
-  to{
+  to {
     transform-origin: top;
     height: 270px;
     display: flex;
