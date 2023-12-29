@@ -21,7 +21,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'avg price per label',
+      text: 'Avg Price/Label',
     },
   },
 };

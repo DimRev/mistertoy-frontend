@@ -21,7 +21,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Total/In-Stock',
+      text: 'Units/Label',
     },
   },
 };

@@ -47,7 +47,7 @@ export function DashboardProducts() {
   return (
     <section className="dashboard-products">
       <TableContainer
-        sx={{ maxHeight: 'calc(100dvh - 80px - 2em)' }}
+        sx={{ maxHeight: 'calc(100dvh - 80px - 4em)' }}
         component={Paper}>
         <Table stickyHeader>
           <TableHead>

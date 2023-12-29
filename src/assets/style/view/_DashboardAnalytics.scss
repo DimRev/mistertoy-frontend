@@ -9,6 +9,11 @@
   .chart-wrapper {
     place-self: center;
     width: 280px;
+    &.sale-month{
+      width: 280px;
+      height: 600px;
+      grid-column: span 1;
+    }
   }
 
   @include for-narrow-layout {
@@ -23,6 +28,10 @@
   @include for-wide-layout {
     .chart-wrapper {
       width: 380px;
+      &.sale-month{
+        width: 800px;
+        grid-column: span 2;
+      }
     }
   }
 }
