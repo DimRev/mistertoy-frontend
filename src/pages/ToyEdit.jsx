@@ -31,7 +31,7 @@ export function ToyEdit() {
       setSelectedToy(toy)
     })
   }, [])
-  const isAdmin = useAdminRedirect()
+  const isAdmin = useAdminRedirect(true, '/', false)
   if (!selectedToy || !isAdmin) {
     return <></>
   }
