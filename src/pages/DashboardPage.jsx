@@ -16,20 +16,34 @@ const theme = createTheme({
       light: '#ee6549',
     },
   },
-});
+})
 
 export function DashboardPage() {
   return (
-    <ThemeProvider theme={theme} >
-      <section className="dashboard-page full">
-      <section className='dashboard-sidebar'>
-        <section className="nav-section">
-          <NavLink to={'/dashboard/analytics'}><Button variant='outlined' color='secondary' style={{ color: theme.palette.secondary.contrastText }}>Analytics</Button></NavLink>
-          <NavLink to={'/dashboard/products'}><Button variant='outlined' color='secondary' style={{ color: theme.palette.secondary.contrastText }}>Products</Button></NavLink>
+    <ThemeProvider theme={theme}>
+      <section className="page dashboard-page full">
+        <section className="dashboard-sidebar">
+          <section className="nav-section">
+            <NavLink to={'/dashboard/analytics'}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                style={{ color: theme.palette.secondary.contrastText }}>
+                Analytics
+              </Button>
+            </NavLink>
+            <NavLink to={'/dashboard/products'}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                style={{ color: theme.palette.secondary.contrastText }}>
+                Products
+              </Button>
+            </NavLink>
+          </section>
         </section>
-      </section>
         <main>
-         <Outlet />
+          <Outlet />
         </main>
       </section>
     </ThemeProvider>

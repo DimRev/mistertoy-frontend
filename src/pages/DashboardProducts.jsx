@@ -2,6 +2,20 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadToys, saveToy, setSort } from '../store/actions/toy.actions'
 import { utilService } from '../services/util.service'
+import {
+  Box,
+  Button,
+  Chip,
+  Paper,
+  Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@mui/material'
 
 export function DashboardProducts() {
   const toys = useSelector((storeState) => storeState.toyModule.toys)
@@ -16,7 +30,7 @@ export function DashboardProducts() {
   }
 
   function onDiff(type, diff, toy) {
-    console.log(type);
+    console.log(type)
     let value = toy[type] + diff
     if (value < 0) {
       value = 0
@@ -32,7 +46,93 @@ export function DashboardProducts() {
   if (!toys || toys.length === 0) return <h1>Loading</h1>
   return (
     <section className="dashboard-products">
-      <table>
+      <TableContainer
+        sx={{ maxHeight: 'calc(100dvh - 80px - 2em)' }}
+        component={Paper}>
+        <Table stickyHeader>
+          <TableHead>
+            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+              <Typography fontWeight="600">Name</Typography>
+            </TableCell>
+            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+              <Typography fontWeight="600">Price</Typography>
+            </TableCell>
+            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+              <Typography fontWeight="600">Created</Typography>
+            </TableCell>
+            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+              <Typography fontWeight="600">Labels</Typography>
+            </TableCell>
+            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+              <Typography fontWeight="600">Inventory</Typography>
+            </TableCell>
+            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+              <Typography fontWeight="600">Stock</Typography>
+            </TableCell>
+            <TableCell align="center" sx={{ backgroundColor: '#ccc' }}>
+              <Typography fontWeight="600">In Stock</Typography>
+            </TableCell>
+          </TableHead>
+          <TableBody>
+            {toys.map((toy) => (
+              <TableRow
+                sx={{ backgroundColor: toy.inStock ? '' : '#ff000055' }}
+                key={toy._id}>
+                <TableCell width="20%" align="center">
+                  <Typography>{toy.name}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Chip label={`$${toy.price}`} />
+                </TableCell>
+                <TableCell width="20%" align="center">
+                  <Typography>{utilService.timeDiff(toy.createdAt)}</Typography>
+                </TableCell>
+                <TableCell width="40%" align="center">
+                  <Box flexWrap="wrap">
+                    {toy.labels.map((label) => (
+                      <Chip
+                        color="secondary"
+                        key={label}
+                        label={label}
+                        size="small"
+                      />
+                    ))}
+                  </Box>
+                </TableCell>
+                <TableCell>
+                  <Stack direction="row" alignItems="center" spacing={1}>
+                    <Button onClick={() => onDiff('inventory', 1, toy)}>
+                      +
+                    </Button>
+                    {toy.inventory}
+                    <Button onClick={() => onDiff('inventory', -1, toy)}>
+                      -
+                    </Button>
+                  </Stack>
+                </TableCell>
+                <TableCell>
+                  <Stack direction="row" alignItems="center">
+                    <Button onClick={() => onDiff('stock', 1, toy)}>+</Button>
+                    {toy.stock}
+                    <Button onClick={() => onDiff('stock', -1, toy)}>-</Button>
+                  </Stack>
+                </TableCell>
+                <TableCell width="20%" align="center">
+                  <Typography>
+                    {toy.inStock ? 'In stock' : 'Not in stock'}
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </section>
+  )
+}
+
+{
+  /* <table>
         <tr>
           <th onClick={() => onSort('name')}>Name</th>
           <th onClick={() => onSort('price')}>Price</th>
@@ -61,7 +161,5 @@ export function DashboardProducts() {
             <td>{toy.inStock ? 'In stock' : 'Out of stock'}</td>
           </tr>
         ))}
-      </table>
-    </section>
-  )
+      </table> */
 }
