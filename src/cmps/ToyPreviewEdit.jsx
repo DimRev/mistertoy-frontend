@@ -13,11 +13,8 @@ import { useState } from 'react'
 import { saveToy } from '../store/actions/toy.actions'
 import { useNavigate } from 'react-router-dom'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { useSelector } from 'react-redux'
 
 export function ToyPreviewEdit({ toy }) {
-  const isLoading = useSelector((storeState) => storeState.toyModule.isLoading)
-
   const [selectedToy, setSelectedToy] = useState(toy)
   const navigate = useNavigate()
 
@@ -59,28 +56,7 @@ export function ToyPreviewEdit({ toy }) {
       showErrorMsg('Failed to edited toy')
     }
   }
-  if (!selectedToy || isLoading)
-    return (
-      <section className="toy-list-section">
-        <Stack
-          direction="row"
-          sx={{ gridColumn: 2 }}
-          minHeight="calc(100dvh - 80px - 270px - 2em)">
-          <MutatingDots
-            className="toy-list-loader"
-            visible={true}
-            height="100"
-            width="100"
-            color="#ea1a5b"
-            secondaryColor="#ea3e1a"
-            radius="12.5"
-            ariaLabel="mutating-dots-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-          />
-        </Stack>
-      </section>
-    )
+
   return (
     <section className="toy-edit-page">
       <form onSubmit={handleSubmit}>
