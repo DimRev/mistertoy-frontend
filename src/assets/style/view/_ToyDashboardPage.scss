@@ -17,6 +17,7 @@
   }
 
   .dashboard-sidebar {
+    z-index: 100;
     position: fixed;
     top: 0;
     left: 0;
@@ -29,7 +30,7 @@
       flex-direction: column;
       align-items: center;
       gap: 0.3em;
-      margin-top: 80px;
+      margin-top: calc($headerHeight + 1em);
 
       .active {
         Button {

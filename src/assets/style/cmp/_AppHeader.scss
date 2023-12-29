@@ -1,5 +1,8 @@
 .app-header {
-  z-index: 10;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 101;
   display: flex;
   height: $headerHeight;
   justify-content: space-between;

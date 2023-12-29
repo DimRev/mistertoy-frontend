@@ -22,3 +22,8 @@
       @include layoutGTC($break-wide);
   }
 }
+
+.page {
+  margin-top: calc($headerHeight + 1em) !important;
+}
+
