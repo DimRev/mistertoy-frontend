@@ -11,6 +11,7 @@ import { ToySort } from '../cmps/ToyIndexCmps/ToySort'
 import { TestCmps } from '../cmps/testCmps'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Stack } from '@mui/material'
 
 const theme = createTheme({
   palette: {
@@ -52,10 +53,12 @@ export function ToyIndex() {
       <ThemeProvider theme={theme}>
         <ToyFilter />
         {/* <TestCmps /> */}
-        <ToySort />
-        <Button variant="text" onClick={onAdd}>
-          Add toy
-        </Button>
+        <Stack margin={2} direction="row" spacing={2} >
+          <ToySort />
+          <Button variant="text" onClick={onAdd}>
+            Add toy
+          </Button>
+        </Stack>
         <ToyList toys={toys} onDelete={onDelete} />
       </ThemeProvider>
     </section>
