@@ -1,6 +1,7 @@
-export function AboutPage(){
-
+export function AboutPage() {
   return (
-    <h1>About Page</h1>
+    <section className="page">
+      <h1>About Page</h1>
+    </section>
   )
 }

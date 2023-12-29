@@ -48,7 +48,7 @@ export function ToyIndex() {
   }
 
   return (
-    <section className="toy-index-page">
+    <section className="page toy-index-page">
       <ThemeProvider theme={theme}>
         <ToyFilter />
         {/* <TestCmps /> */}

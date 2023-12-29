@@ -15,7 +15,7 @@ export function ToyDetails() {
     return <h1>Loading</h1>
   }
   return (
-    <section className="toy-details-page">
+    <section className="page toy-details-page">
       <h2>Toy Details</h2>
       <ToyPreviewLarge toy={selectedToy} />
     </section>

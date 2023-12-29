@@ -1,6 +1,7 @@
-export function HomePage(){
-
+export function HomePage() {
   return (
-    <h1>Home Page</h1>
+    <section className="page">
+      <h1>Home Page</h1>
+    </section>
   )
 }

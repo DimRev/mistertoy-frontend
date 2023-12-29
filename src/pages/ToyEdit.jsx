@@ -34,7 +34,7 @@ export function ToyEdit() {
     return <h1>Loading</h1>
   }
   return (
-    <section className="toy-edit-page">
+    <section className="page toy-edit-page">
       <ThemeProvider theme={theme}>
         <h2>Toy Edit</h2>
 
