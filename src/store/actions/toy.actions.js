@@ -44,6 +44,13 @@ export async function removeToy(toyId) {
   }
 }
 
+export async function addToy(user){
+  const toy = toyService.getEmptyToy()
+  toy.owner = user
+  saveToy(toy)
+
+}
+
 export async function saveToy(toy) {
   const type = toy._id ? UPDATE_TOY : ADD_TOY
   const errType = toy._id ? 'update' : 'add'
