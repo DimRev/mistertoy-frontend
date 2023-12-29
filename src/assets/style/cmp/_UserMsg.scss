@@ -1,24 +1,16 @@
-.user-msg{
+.user-msg {
   display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
+  width: fit-content;
+  bottom: 1em;
+  right: 1em;
+  // translate: -50% -50%;
   z-index: 100;
 
-  padding: .5em;
+  padding: 0.5em;
 
-  &.success{
+  &.success,
+  &.error {
     display: block;
-
-    background-color: $success;
-    color: $success-content;
-  }
-
-  &.error{
-    display: block;
-
-    background-color: $error;
-    color: $error-content;
   }
 }
