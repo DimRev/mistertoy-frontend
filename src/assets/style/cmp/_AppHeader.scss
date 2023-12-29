@@ -16,7 +16,7 @@
     gap: 1em;
 
     .hamburger-btn.open .icon{
-      animation: changeMenuIcon .6s linear;
+      animation: changeMenuIcon .6s ease;
     }
     .hamburger-btn.close .icon{
       animation: changeMenuIcon .6s ease;
