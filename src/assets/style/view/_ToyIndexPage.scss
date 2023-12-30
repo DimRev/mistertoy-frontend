@@ -5,55 +5,15 @@
   }
 
   .toy-list-section {
-    display: grid;
-    align-items: center;
-    justify-items: center;
     background-color: $foreground;
+    padding: .3em;
     border-radius: 7px;
-    grid-template-columns: repeat(auto-fill, 380px);
-
-    svg{
-      margin-top: auto;
-      margin-bottom: auto;
-    }
-
-    @include for-narrow-layout {
-      grid-template-columns: repeat(auto-fill, 380px);
-      gap: 0.4em;
-      padding: 0.5em;
-      margin: 0.9em;
-
-    }
-
-    @include for-normal-layout {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 0.3em;
-      padding: 0.5em;
-      margin: 0.9em;
-
-    }
-
-    @include for-wide-layout {
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 0.5em;
-      padding: 0.5em;
-      margin: 1em;
-      }
-    }
-
   }
+}
 
 .toy-index-page .preview-card {
   background-color: $primary-dark;
   color: $primary-content;
-
-  width: 90%;
-  padding: .5em;
-  margin: .3em;
-
-  display: grid;
-  justify-content: center;
-  align-content: space-between;
 
   img {
     width: 100%;

@@ -1,6 +1,7 @@
 import { MutatingDots } from 'react-loader-spinner'
 import { ToyPreview } from '../ToyPreview'
-import { Stack } from '@mui/material'
+import { Grid, Stack } from '@mui/material'
+
 
 export function ToyList({ toys, onDelete, isLoading }) {
   if (!toys || isLoading)
@@ -27,10 +28,10 @@ export function ToyList({ toys, onDelete, isLoading }) {
     )
   if (!toys.length === 0) return <h1>Toy List : No toys</h1>
   return (
-    <section className="toy-list-section">
+    <Grid container className="toy-list-section"  >
       {toys.map((toy) => (
         <ToyPreview key={toy._id} toy={toy} onDelete={onDelete} />
       ))}
-    </section>
+    </Grid>
   )
 }
