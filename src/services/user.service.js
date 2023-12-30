@@ -2,6 +2,7 @@ import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 
 const BASE_URL = 'auth/'
+const SEC_URL = 'user/'
 const STORAGE_KEY_LOGGEDIN = 'loggedinUser'
 
 export const userService = {
@@ -10,12 +11,18 @@ export const userService = {
     signup,
     getById,
     getLoggedinUser,
+    update,
     updateScore,
     getEmptyCredentials
 }
 
 function getById(userId) {
-    return httpService.get(BASE_URL + userId)
+    return httpService.get(SEC_URL + userId)
+}
+
+function update(user){
+    console.log(user)
+    return httpService.put(SEC_URL + user._id, user)
 }
 
 async function login({ username, password }) {
