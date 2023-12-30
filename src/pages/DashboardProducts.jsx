@@ -30,7 +30,6 @@ export function DashboardProducts() {
   }
 
   function onDiff(type, diff, toy) {
-    console.log(type)
     let value = toy[type] + diff
     if (value < 0) {
       value = 0

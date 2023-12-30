@@ -46,9 +46,9 @@ export async function getUserById(userId) {
 }
 
 export async function updateUser(user) {
-  console.log(user)
   try {
     const updatedUser = await userService.update(user)
+    store.dispatch({type:SET_USER, user: updatedUser})
     return updatedUser
   } catch (err) {
     console.log('user actions -> Cannot update user', err)
