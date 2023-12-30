@@ -86,7 +86,7 @@ export function ToyIndex() {
                   height: '60px',
                   width: '60px',
                   position: 'fixed',
-                  top: 'calc(80px + 1em)',
+                  bottom: '1em',
                   left: '1em',
                 }}
                 onClick={()=>{setCartOpen(p=>!p)}}
