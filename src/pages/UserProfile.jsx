@@ -1,8 +1,25 @@
-import { useEffect, useState } from 'react'
+import { ThemeProvider } from '@emotion/react'
+import { createTheme } from '@mui/material'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet, useNavigate, useParams } from 'react-router-dom'
-import { UserProfileCard } from './UserProfileCard'
-import { getUserById } from '../store/actions/user.actions'
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ea1a5b',
+      contrastText: '#ffffff', // Text color for primary
+      dark: '#bf1248',
+      light: '#ee497c',
+    },
+    secondary: {
+      main: '#ea3e1a',
+      contrastText: '#ffffff', // Text color for secondary
+      dark: '#bf3012',
+      light: '#ee6549',
+    },
+  },
+})
 
 export function UserProfile() {
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
@@ -18,7 +35,9 @@ export function UserProfile() {
 
   return (
     <section className="page user-profile-page">
-      <Outlet />
+      <ThemeProvider theme={theme}>
+        <Outlet />
+      </ThemeProvider>
     </section>
   )
 }
