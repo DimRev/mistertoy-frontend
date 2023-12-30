@@ -1,16 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import { updateUser } from '../store/actions/user.actions'
+import { getUserById, updateUser } from '../store/actions/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { useSelector } from 'react-redux'
 
-export function UserProfileCard({ fullUser,onEditUser }) {
-  const [editedUser, setEditedUser] = useState(fullUser)
+export function UserProfileCard() {
+  const user = useSelector((storeState) => storeState.userModule.loggedinUser)
+  const [fullUser, setFullUser] = useState(null)
+  const [editedUser, setEditedUser] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
+
+  useEffect(()=>{
+    getUserById(user._id).then((newUser) => {
+      setFullUser((prevUser) => {
+        setEditedUser({...newUser})
+        return { ...prevUser, ...newUser }})
+    })
+  },[])
 
   function handleEditClick() {
     setIsEditing(true)
@@ -22,10 +33,9 @@ export function UserProfileCard({ fullUser,onEditUser }) {
   }
 
   async function handleSaveChanges() {
-    console.log('Edited User:', editedUser)
     try {
       await updateUser(editedUser)
-      onEditUser(editedUser)
+      setFullUser(editedUser)
       showSuccessMsg('User updated successfully')
     } catch (err) {
       showErrorMsg('Failed to update user: ' + err.message)
@@ -40,6 +50,8 @@ export function UserProfileCard({ fullUser,onEditUser }) {
       [field]: value,
     }))
   }
+
+  if(!fullUser) return <></>
 
   return (
     <Card>

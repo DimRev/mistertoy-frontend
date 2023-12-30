@@ -192,7 +192,7 @@ export function AppHeader() {
                 anchorEl={avatarBtn.current}
                 onClose={handleAvatarMenuClose}>
                 <MenuItem key="profile" onClick={handleAvatarMenuClose}>
-                  <NavLink to={`/user/${user._id}`}>
+                  <NavLink to={`/user/${user._id}/profile`}>
                     <Button sx={{ width: '150px' }}>Profile</Button>
                   </NavLink>
                 </MenuItem>
