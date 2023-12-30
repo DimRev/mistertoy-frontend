@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
 
 import { ToyList } from '../cmps/ToyIndexCmps/ToyList'
@@ -11,6 +11,8 @@ import { ToySort } from '../cmps/ToyIndexCmps/ToySort'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Stack } from '@mui/material'
 import { showSuccessMsg } from '../services/event-bus.service'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Shop, ShoppingBag } from '@mui/icons-material'
 
 const theme = createTheme({
   palette: {
@@ -36,6 +38,10 @@ export function ToyIndex() {
   const sortBy = useSelector((storeState) => storeState.toyModule.sortBy)
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
 
+
+  const location = useLocation()
+  const [cartOpen, setCartOpen] = useState(location.pathname.includes('/cart'))
+
   useEffect(() => {
     loadToys()
   }, [filterBy, sortBy])
@@ -53,6 +59,10 @@ export function ToyIndex() {
     removeToy(toyId)
   }
 
+  function onCart(){
+
+  }
+
   return (
     <section className="page toy-index-page">
       <ThemeProvider theme={theme}>
@@ -66,6 +76,27 @@ export function ToyIndex() {
           )}
         </Stack>
         <ToyList toys={toys} onDelete={onDelete} isLoading={isLoading} />
+        {user && (
+          <>
+            <NavLink to={ cartOpen ? '/toy/' : './cart'}>
+              <Button
+                variant="contained"
+                color="secondary"
+                sx={{
+                  height: '60px',
+                  width: '60px',
+                  position: 'fixed',
+                  top: 'calc(80px + 1em)',
+                  left: '1em',
+                }}
+                onClick={()=>{setCartOpen(p=>!p)}}
+                >
+                <ShoppingBag />
+              </Button>
+            </NavLink>
+            <Outlet />
+          </>
+        )}
       </ThemeProvider>
     </section>
   )

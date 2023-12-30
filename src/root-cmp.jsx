@@ -13,6 +13,7 @@ import { AboutPage } from './pages/AboutPage'
 import { DashboardPage } from './pages/DashboardPage'
 import { DashboardAnalytics } from './pages/DashboardAnalytics'
 import { DashboardProducts } from './pages/DashboardProducts'
+import { ToyCart } from './pages/ToyCart'
 
 export function App() {
   return (
@@ -27,7 +28,9 @@ export function App() {
               <Route element={<DashboardAnalytics />} path="/dashboard/analytics" />
               <Route element={<DashboardProducts />} path="/dashboard/products" />
             </Route>
-            <Route element={<ToyIndex />} path="/toy" />
+            <Route element={<ToyIndex />} path="/toy">
+              <Route element={<ToyCart />} path="/toy/cart"/>
+            </Route>
             <Route element={<ToyEdit />} path="/toy/edit/:toyId" />
             <Route element={<ToyDetails />} path="/toy/:toyId" />
           </Routes>
