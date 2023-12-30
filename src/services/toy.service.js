@@ -109,6 +109,7 @@ function getEmptyToy() {
     labels: [],
     inventory: 100,
     stock: 100,
+    rating: 2,
     createdAt: Date.now(),
     inStock: true,
   }

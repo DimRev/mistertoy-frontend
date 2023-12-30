@@ -3,7 +3,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { Button, CardActionArea, CardActions, Chip, Stack } from '@mui/material'
+import { Button, CardActionArea, CardActions, Chip, Rating, Stack } from '@mui/material'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import useAdminRedirect from '../../hooks/useAdminRedirect'
@@ -44,6 +44,7 @@ export function ToyPreviewLarge({ toy, onDelete }) {
           />
           <CardContent>
             <Stack direction="row" justifyContent="space-between">
+            <Rating name="read-only" value={toy.rating} readOnly />
               <Typography gutterBottom variant="h5" component="div">
                 {toy.name}
               </Typography>

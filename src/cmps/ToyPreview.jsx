@@ -9,6 +9,7 @@ import {
   CardActions,
   Chip,
   Grid,
+  Rating,
   Stack,
 } from '@mui/material'
 import { utilService } from '../services/util.service'
@@ -71,6 +72,7 @@ export function ToyPreview({ toy, onDelete }) {
               }}>
               {utilService.timeDiff(toy.createdAt)}
             </Typography>
+            <Rating name="read-only" value={toy.rating} readOnly />
           </CardContent>
         </CardActionArea>
         <CardActions
