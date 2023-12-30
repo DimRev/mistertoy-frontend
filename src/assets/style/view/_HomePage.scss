@@ -1,0 +1,28 @@
+.hero-section{
+  background-image: url('/public/hero.png');
+  width: 100%; /* Set the width of the container */
+  height: 300px; /* Set the height of the container */
+  background-size: cover; /* Cover the entire container, maintaining aspect ratio */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the background image */
+
+  .hero-title{
+    margin-top: calc($headerHeight + 1em);
+    letter-spacing: .05em;
+    color: $copy;
+    text-shadow:
+      0 0 1px $secondary-light,
+      0 0 2px $secondary-light,
+      0 0 3px $secondary-light,
+      0 0 4px $secondary-light,
+      0 0 5px $secondary,
+      0 0 6px $secondary,
+      0 0 7px $secondary-dark,
+      0 0 8px $secondary-dark,
+      0 0 9px $secondary-dark;
+  }
+}
+
+.home-page-main {
+
+}
