@@ -1,5 +1,5 @@
 import { toyService } from '../../services/toy.service'
-import { ADD_TOY } from '../reducers/toy.reducer'
+import { ADD_TOY, SET_OWNER } from '../reducers/toy.reducer'
 import { REMOVE_TOY } from '../reducers/toy.reducer'
 import { SET_TOYS } from '../reducers/toy.reducer'
 import { UPDATE_TOY } from '../reducers/toy.reducer'
@@ -16,11 +16,12 @@ import { store } from '../store'
 export async function loadToys() {
   const filterBy = store.getState().toyModule.filterBy
   const sortBy = store.getState().toyModule.sortBy
+  const owner = store.getState().toyModule.owner
 
   let toys
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
   try {
-    toys = await toyService.query(filterBy, sortBy)
+    toys = await toyService.query(filterBy, sortBy, owner)
     store.dispatch({ type: SET_TOYS, toys })
   } catch (err) {
     console.error('toy action -> cannot load toys', err)
@@ -29,6 +30,10 @@ export async function loadToys() {
     store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     return toys
   }
+}
+
+export function setOwner(userId){
+  store.dispatch({ type: SET_OWNER, owner: userId})
 }
 
 export async function removeToy(toyId) {

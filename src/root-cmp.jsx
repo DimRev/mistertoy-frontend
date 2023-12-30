@@ -16,6 +16,7 @@ import { DashboardProducts } from './pages/DashboardProducts'
 import { ToyCart } from './pages/ToyCart'
 import { UserProfile } from './pages/UserProfile'
 import { UserProfileCard } from './pages/UserProfileCard'
+import { UserProfileToy } from './pages/UserProfileToys'
 
 export function App() {
   return (
@@ -43,9 +44,12 @@ export function App() {
             <Route element={<ToyDetails />} path="/toy/:toyId" />
             <Route element={<UserProfile />} path="/user/:userId">
               <Route
-                index
                 element={<UserProfileCard />}
                 path="/user/:userId/profile"
+              />
+              <Route
+                element={<UserProfileToy />}
+                path="/user/:userId/toy"
               />
             </Route>
           </Routes>

@@ -76,10 +76,10 @@ export const toyService = {
   getDefaultFilter,
 }
 
-function query(filterBy = {}, sortBy = 'name') {
+function query(filterBy = {}, sortBy = 'name', owner = undefined) {
 
   // return storageService.query(STORAGE_KEY)
-  return httpService.get(BASE_URL, {filterBy, sortBy})
+  return httpService.get(BASE_URL, {filterBy, sortBy, owner})
 }
 
 function getById(toyId) {

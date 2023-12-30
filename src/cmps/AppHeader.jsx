@@ -197,7 +197,7 @@ export function AppHeader() {
                   </NavLink>
                 </MenuItem>
                 <MenuItem key="user-toys" onClick={handleAvatarMenuClose}>
-                  <NavLink>
+                  <NavLink to={`/user/${user._id}/toy`}>
                     <Button sx={{ width: '150px' }}>Your toys</Button>
                   </NavLink>
                 </MenuItem>

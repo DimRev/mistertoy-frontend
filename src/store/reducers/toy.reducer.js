@@ -6,10 +6,12 @@ export const UPDATE_TOY = 'UPDATE_TOY'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 export const SET_FILTER = 'SET_FILTER'
 export const SET_SORT = 'SET_SORT'
+export const SET_OWNER = 'SET_OWNER'
 
 const initialState = {
   toys: [],
-  filterBy: { name: '', stockStatus: 'all' , labels: ['All']},
+  filterBy: { name: '', stockStatus: 'all', labels: ['All'] },
+  owner: undefined,
   sortBy: 'name',
   isLoading: false,
 }
@@ -41,6 +43,8 @@ export function toyReducer(state = initialState, action = {}) {
       return { ...state, filterBy: action.filterBy }
     case SET_SORT:
       return { ...state, sortBy: action.sortBy }
+    case SET_OWNER:
+      return { ...state, owner: action.owner }
 
     // * LOADING
     case SET_IS_LOADING:

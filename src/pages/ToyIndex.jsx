@@ -4,7 +4,12 @@ import Button from '@mui/material/Button'
 
 import { ToyList } from '../cmps/ToyIndexCmps/ToyList'
 
-import { addToy, loadToys, removeToy } from '../store/actions/toy.actions'
+import {
+  addToy,
+  loadToys,
+  removeToy,
+  setOwner,
+} from '../store/actions/toy.actions'
 import { ToyFilter } from '../cmps/ToyIndexCmps/ToyFilter'
 import { ToySort } from '../cmps/ToyIndexCmps/ToySort'
 
@@ -37,14 +42,18 @@ export function ToyIndex() {
   const filterBy = useSelector((storeState) => storeState.toyModule.filterBy)
   const sortBy = useSelector((storeState) => storeState.toyModule.sortBy)
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
-
+  const owner = useSelector((storeState) => storeState.toyModule.owner)
 
   const location = useLocation()
   const [cartOpen, setCartOpen] = useState(location.pathname.includes('/cart'))
 
   useEffect(() => {
+    setOwner(undefined)
+  })
+
+  useEffect(() => {
     loadToys()
-  }, [filterBy, sortBy])
+  }, [filterBy, sortBy, owner])
 
   async function onAdd() {
     try {
@@ -59,9 +68,7 @@ export function ToyIndex() {
     removeToy(toyId)
   }
 
-  function onCart(){
-
-  }
+  function onCart() {}
 
   return (
     <section className="page toy-index-page">
@@ -78,7 +85,7 @@ export function ToyIndex() {
         <ToyList toys={toys} onDelete={onDelete} isLoading={isLoading} />
         {user && (
           <>
-            <NavLink to={ cartOpen ? '/toy/' : './cart'}>
+            <NavLink to={cartOpen ? '/toy/' : './cart'}>
               <Button
                 variant="contained"
                 color="secondary"
@@ -89,8 +96,9 @@ export function ToyIndex() {
                   bottom: '1em',
                   left: '1em',
                 }}
-                onClick={()=>{setCartOpen(p=>!p)}}
-                >
+                onClick={() => {
+                  setCartOpen((p) => !p)
+                }}>
                 <ShoppingBag />
               </Button>
             </NavLink>
