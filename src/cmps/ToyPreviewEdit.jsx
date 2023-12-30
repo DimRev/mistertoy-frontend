@@ -13,6 +13,7 @@ import { useState } from 'react'
 import { saveToy } from '../store/actions/toy.actions'
 import { useNavigate } from 'react-router-dom'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { Container, Paper } from '@mui/material'
 
 export function ToyPreviewEdit({ toy }) {
   const [selectedToy, setSelectedToy] = useState(toy)
@@ -59,72 +60,74 @@ export function ToyPreviewEdit({ toy }) {
 
   return (
     <section className="toy-edit-page">
-      <form onSubmit={handleSubmit}>
-        <img src={`../../${selectedToy.img}`} alt={selectedToy.name} />
-        <Box m={2}>
-          <TextField
-            label="Name"
-            variant="outlined"
-            fullWidth
-            value={selectedToy.name}
-            onChange={handleTextInputChange}
-          />
-        </Box>
-        <Box m={2}>
-          <FormControl fullWidth variant="outlined">
-            <InputLabel id="labels-label">Multi Selector</InputLabel>
-            <Select
-              labelId="labels-label"
-              id="labels"
-              multiple
-              value={selectedToy.labels}
-              onChange={handleMultiSelectorChange}
-              label="labels">
-              <MenuItem value="On wheels">On wheels</MenuItem>
-              <MenuItem value="Box game">Box game</MenuItem>
-              <MenuItem value="Art">Art</MenuItem>
-              <MenuItem value="Baby">Baby</MenuItem>
-              <MenuItem value="Doll">Doll</MenuItem>
-              <MenuItem value="Puzzle">Puzzle</MenuItem>
-              <MenuItem value="Outdoor">Outdoor</MenuItem>
-              <MenuItem value="Battery Powered">Battery Powered</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Box m={2}>
-          <TextField
-            label="Price"
-            variant="outlined"
-            fullWidth
-            type="number"
-            value={selectedToy.price}
-            onChange={handleNumberInputChange}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              ),
-            }}
-          />
-        </Box>
-        <Box m={2}>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={selectedToy.inStock}
-                  onChange={handleCheckboxChange}
+      <Paper sx={{height: 'calc(100vh - 120px - 4em)'}}>
+          <img src={`../../${selectedToy.img}`} alt={selectedToy.name} />
+          <form onSubmit={handleSubmit}>
+            <Box m={2}>
+              <TextField
+                label="Name"
+                variant="outlined"
+                fullWidth
+                value={selectedToy.name}
+                onChange={handleTextInputChange}
+              />
+            </Box>
+            <Box m={2}>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel id="labels-label">Multi Selector</InputLabel>
+                <Select
+                  labelId="labels-label"
+                  id="labels"
+                  multiple
+                  value={selectedToy.labels}
+                  onChange={handleMultiSelectorChange}
+                  label="labels">
+                  <MenuItem value="On wheels">On wheels</MenuItem>
+                  <MenuItem value="Box game">Box game</MenuItem>
+                  <MenuItem value="Art">Art</MenuItem>
+                  <MenuItem value="Baby">Baby</MenuItem>
+                  <MenuItem value="Doll">Doll</MenuItem>
+                  <MenuItem value="Puzzle">Puzzle</MenuItem>
+                  <MenuItem value="Outdoor">Outdoor</MenuItem>
+                  <MenuItem value="Battery Powered">Battery Powered</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            <Box m={2}>
+              <TextField
+                label="Price"
+                variant="outlined"
+                fullWidth
+                type="number"
+                value={selectedToy.price}
+                onChange={handleNumberInputChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+            <Box m={2}>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={selectedToy.inStock}
+                      onChange={handleCheckboxChange}
+                    />
+                  }
+                  label="In stock"
                 />
-              }
-              label="In stock"
-            />
-          </FormGroup>
-        </Box>
-        <Box m={2}>
-          <Button type="submit" variant="contained" color="primary">
-            Submit
-          </Button>
-        </Box>
-      </form>
+              </FormGroup>
+            </Box>
+            <Box m={2}>
+              <Button type="submit" variant="contained" color="primary">
+                Submit
+              </Button>
+            </Box>
+          </form>
+      </Paper>
     </section>
   )
 }
