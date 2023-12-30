@@ -57,17 +57,7 @@ export function ToyPreviewLarge({ toy, onDelete }) {
                 $ {toy.price}
               </Typography>
             </Stack>
-            <Stack direction="row" spacing={1}>
-              {toy.labels.map((label, idx) => (
-                <Chip
-                  key={`${toy._id}${idx}`}
-                  color="secondary"
-                  style={{ color: theme.palette.secondary.contrastText }}
-                  size="small"
-                  label={label}
-                />
-              ))}
-            </Stack>
+
           </CardContent>
         </CardActionArea>
         <CardActions>
@@ -85,6 +75,19 @@ export function ToyPreviewLarge({ toy, onDelete }) {
             <Button variant="outlined">Back</Button>
           </Link>
         </CardActions>
+        <CardContent>
+        <Stack direction="row" spacing={1}>
+              {toy.labels.map((label, idx) => (
+                <Chip
+                  key={`${toy._id}${idx}`}
+                  color="secondary"
+                  style={{ color: theme.palette.secondary.contrastText }}
+                  size="small"
+                  label={label}
+                />
+              ))}
+            </Stack>
+        </CardContent>
       </ThemeProvider>
     </Card>
   )

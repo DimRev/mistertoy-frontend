@@ -52,16 +52,6 @@ export function ToyPreview({ toy, onDelete }) {
                 label={`$${toy.price}`}
               />
             </Stack>
-            <Stack direction="row" gap={0.2} flexWrap="wrap">
-              {toy.labels.map((label, idx) => (
-                <Chip
-                  key={`${toy._id}${idx}`}
-                  color="secondary"
-                  size="small"
-                  label={label}
-                />
-              ))}
-            </Stack>
             <Typography
               sx={{
                 marginInlineStart: 1,
@@ -92,6 +82,18 @@ export function ToyPreview({ toy, onDelete }) {
             <Button variant="contained">Details</Button>
           </Link>
         </CardActions>
+        <CardContent>
+        <Stack direction="row" gap={0.2} flexWrap="wrap">
+              {toy.labels.map((label, idx) => (
+                <Chip
+                  key={`${toy._id}${idx}`}
+                  color="secondary"
+                  size="small"
+                  label={label}
+                />
+              ))}
+            </Stack>
+        </CardContent>
       </Card>
     </Grid>
   )
