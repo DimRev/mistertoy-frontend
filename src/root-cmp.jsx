@@ -14,6 +14,7 @@ import { DashboardPage } from './pages/DashboardPage'
 import { DashboardAnalytics } from './pages/DashboardAnalytics'
 import { DashboardProducts } from './pages/DashboardProducts'
 import { ToyCart } from './pages/ToyCart'
+import { UserProfile } from './pages/UserProfile'
 
 export function App() {
   return (
@@ -33,6 +34,7 @@ export function App() {
             </Route>
             <Route element={<ToyEdit />} path="/toy/edit/:toyId" />
             <Route element={<ToyDetails />} path="/toy/:toyId" />
+            <Route element={<UserProfile />} path="/user/:userId" />
           </Routes>
         </Router>
       </main>
