@@ -39,7 +39,7 @@ export function ToyPreviewLarge({ toy, onDelete }) {
           <CardMedia
             component="img"
             height="300"
-            image={`/${toy.img}`}
+            image={`/public/${toy.img}`}
             alt="green iguana"
           />
           <CardContent>

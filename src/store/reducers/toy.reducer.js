@@ -7,13 +7,16 @@ export const SET_IS_LOADING = 'SET_IS_LOADING'
 export const SET_FILTER = 'SET_FILTER'
 export const SET_SORT = 'SET_SORT'
 export const SET_OWNER = 'SET_OWNER'
+export const SET_PAGE = 'SET_PAGE'
 
 const initialState = {
   toys: [],
+  totalPages: 1,
   filterBy: { name: '', stockStatus: 'all', labels: ['All'] },
   owner: undefined,
   sortBy: 'name',
   isLoading: false,
+  page: 1,
 }
 
 export function toyReducer(state = initialState, action = {}) {
@@ -22,7 +25,7 @@ export function toyReducer(state = initialState, action = {}) {
   switch (action.type) {
     // * TOYS CRUD
     case SET_TOYS:
-      return { ...state, toys: action.toys }
+      return { ...state, toys: action.toysData.toys, totalPages: action.toysData.totalPages }
 
     case REMOVE_TOY:
       toys = state.toys.filter((toy) => toy._id !== action.toyId)
@@ -45,6 +48,8 @@ export function toyReducer(state = initialState, action = {}) {
       return { ...state, sortBy: action.sortBy }
     case SET_OWNER:
       return { ...state, owner: action.owner }
+    case SET_PAGE:
+      return { ...state, page: action.page }
 
     // * LOADING
     case SET_IS_LOADING:

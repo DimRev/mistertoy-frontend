@@ -1,5 +1,5 @@
 import { toyService } from '../../services/toy.service'
-import { ADD_TOY, SET_OWNER } from '../reducers/toy.reducer'
+import { ADD_TOY, SET_OWNER, SET_PAGE } from '../reducers/toy.reducer'
 import { REMOVE_TOY } from '../reducers/toy.reducer'
 import { SET_TOYS } from '../reducers/toy.reducer'
 import { UPDATE_TOY } from '../reducers/toy.reducer'
@@ -17,24 +17,23 @@ export async function loadToys() {
   const filterBy = store.getState().toyModule.filterBy
   const sortBy = store.getState().toyModule.sortBy
   const owner = store.getState().toyModule.owner
+  const page = store.getState().toyModule.page
 
-  let toys
+  let toysData
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
   try {
-    toys = await toyService.query(filterBy, sortBy, owner)
-    store.dispatch({ type: SET_TOYS, toys })
+    toysData = await toyService.query(filterBy, sortBy, owner, page)
+    store.dispatch({ type: SET_TOYS, toysData })
   } catch (err) {
     console.error('toy action -> cannot load toys', err)
     throw err
   } finally {
     store.dispatch({ type: SET_IS_LOADING, isLoading: false })
-    return toys
+    return toysData
   }
 }
 
-export function setOwner(userId){
-  store.dispatch({ type: SET_OWNER, owner: userId})
-}
+
 
 export async function removeToy(toyId) {
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
@@ -79,4 +78,12 @@ export function setFilter(filterBy) {
 
 export function setSort(sortBy) {
   store.dispatch({ type: SET_SORT, sortBy })
+}
+
+export function setOwner(userId){
+  store.dispatch({ type: SET_OWNER, owner: userId})
+}
+
+export function setPage(page){
+  store.dispatch({ type: SET_PAGE, page: page })
 }

@@ -39,7 +39,7 @@ export function ToyPreview({ toy, onDelete }) {
           <CardMedia
             component="img"
             height="250"
-            image={`${toy.img}`}
+            image={`/public/${toy.img}`}
             alt={toy.name}
           />
           <CardContent>

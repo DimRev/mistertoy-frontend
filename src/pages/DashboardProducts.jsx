@@ -1,11 +1,17 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadToys, saveToy, setSort } from '../store/actions/toy.actions'
+import {
+  loadToys,
+  saveToy,
+  setPage,
+  setSort,
+} from '../store/actions/toy.actions'
 import { utilService } from '../services/util.service'
 import {
   Box,
   Button,
   Chip,
+  Pagination,
   Paper,
   Stack,
   Table,
@@ -20,11 +26,22 @@ import {
 export function DashboardProducts() {
   const toys = useSelector((storeState) => storeState.toyModule.toys)
   const sortBy = useSelector((storeState) => storeState.toyModule.sortBy)
+  const page = useSelector((storeState) => storeState.toyModule.page)
+  const totalPages = useSelector(
+    (storeState) => storeState.toyModule.totalPages
+  )
+
+  useEffect(() => {
+    setPage(1)
+  }, [])
 
   useEffect(() => {
     loadToys()
-  }, [sortBy])
+  }, [sortBy, page])
 
+  const handleChange = (event, value) => {
+    setPage(value)
+  }
   function onSort(type) {
     setSort(type)
   }
@@ -128,6 +145,11 @@ export function DashboardProducts() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Stack
+        direction="row"
+        sx={{ display: 'flex', justifyContent: 'center', margin: '1em' }}>
+        <Pagination count={totalPages} page={page} onChange={handleChange} />
+      </Stack>
     </section>
   )
 }

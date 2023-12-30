@@ -13,10 +13,11 @@ export function UserProfileToy() {
   const filterBy = useSelector((storeState) => storeState.toyModule.filterBy)
   const sortBy = useSelector((storeState) => storeState.toyModule.sortBy)
   const owner = useSelector((storeState) => storeState.toyModule.owner)
+  const page = useSelector((storeState) => storeState.toyModule.page)
 
   useEffect(() => {
     loadToys()
-  }, [filterBy, sortBy, owner])
+  }, [filterBy, sortBy, owner, page])
 
   useEffect(() => {
     setOwner(user._id)

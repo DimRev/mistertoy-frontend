@@ -43,6 +43,7 @@ export function ToyIndex() {
   const sortBy = useSelector((storeState) => storeState.toyModule.sortBy)
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
   const owner = useSelector((storeState) => storeState.toyModule.owner)
+  const page = useSelector((storeState) => storeState.toyModule.page)
 
   const location = useLocation()
   const [cartOpen, setCartOpen] = useState(location.pathname.includes('/cart'))
@@ -53,7 +54,7 @@ export function ToyIndex() {
 
   useEffect(() => {
     loadToys()
-  }, [filterBy, sortBy, owner])
+  }, [filterBy, sortBy, owner, page])
 
   async function onAdd() {
     try {
