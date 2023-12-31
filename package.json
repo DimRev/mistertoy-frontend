@@ -15,12 +15,9 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.15.2",
     "@mui/material": "^5.15.2",
-    "@mui/x-charts": "^6.18.4",
-    "axios": "^1.6.2",
-    "chart.js": "^4.4.1",
+    "axios": "^1.6.3",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
-    "react-dom": "^18.2.0",
     "react-loader-spinner": "^6.1.6",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.1",
@@ -35,6 +32,6 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.8"
+    "vite": "^5.0.10"
   }
 }
