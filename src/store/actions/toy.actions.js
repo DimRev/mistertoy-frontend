@@ -19,6 +19,7 @@ export async function loadToys() {
   const owner = store.getState().toyModule.owner
   const page = store.getState().toyModule.page
 
+
   let toysData
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
   try {
@@ -32,8 +33,6 @@ export async function loadToys() {
     return toysData
   }
 }
-
-
 
 export async function removeToy(toyId) {
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
@@ -52,7 +51,6 @@ export async function addToy(user){
   const toy = toyService.getEmptyToy()
   toy.owner = user
   saveToy(toy)
-
 }
 
 export async function saveToy(toy) {
@@ -72,13 +70,15 @@ export async function saveToy(toy) {
   }
 }
 
-export function addToyMsg(toy,msg,user){
+export async function addToyMsg(toyId,msg,user){
   const newMsg = {...toyService.getEmptyMsg(), content:msg}
   if(user) newMsg.owner = user
-  if(toy.msgs) toy.msgs = [...toy.msgs, newMsg]
-  else toy.msgs = [newMsg]
-  console.log(toy)
-  saveToy(toy)
+  try {
+    const savedMsg = await toyService.addMsg(toyId, newMsg)
+    return savedMsg
+  } catch (err) {
+    console.error(`toy action -> cannot save Msg`, err)
+  }
 }
 
 export function setFilter(filterBy) {

@@ -72,6 +72,7 @@ export const toyService = {
   getById,
   save,
   remove,
+  addMsg,
   getEmptyToy,
   getEmptyMsg,
   getDefaultFilter,
@@ -102,6 +103,10 @@ function save(toy) {
   }
 }
 
+function addMsg(toyId, msg){
+  return httpService.post(BASE_URL + 'msg/' ,{ toyId, msg })
+}
+
 function getEmptyToy() {
   return {
     name: utilService.makeLorem(2),
@@ -117,7 +122,7 @@ function getEmptyToy() {
 }
 
 function getEmptyMsg() {
-  return { content: '', owner: {username:'Anonymous'}, createdAt: Date.now() }
+  return { content: '', owner: {username:'Anonymous'}, createdAt: Date.now(), id: utilService.makeId()}
 }
 
 function getDefaultFilter() {

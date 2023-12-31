@@ -6,8 +6,10 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
+import { utilService } from '../services/util.service'
 
 export function ToyReviewMsgs({msg}) {
+  console.log(msg)
   return (
     <Card sx={{margin:'1em'}} variant='outlined'>
       <Grid container>
@@ -21,7 +23,7 @@ export function ToyReviewMsgs({msg}) {
             <Stack direction="row" alignItems="end" spacing={1}>
               <Typography variant="subtitle2">{msg.owner.username}</Typography>
               <Typography variant="caption" color="GrayText">
-                {msg.createdAt}
+                {utilService.timeDiff(msg.createdAt)}
               </Typography>
             </Stack>
             <Typography >

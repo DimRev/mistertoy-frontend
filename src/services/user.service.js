@@ -65,6 +65,7 @@ function getLoggedinUser() {
 function _setLoggedinUser(user) {
   const userToSave = {
     _id: user._id,
+    username: user.username,
     fullname: user.fullname,
     score: user.score,
   }

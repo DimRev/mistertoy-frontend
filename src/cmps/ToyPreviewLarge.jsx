@@ -19,6 +19,8 @@ import useAdminRedirect from '../../hooks/useAdminRedirect'
 import { useSelector } from 'react-redux'
 import { ToyReviewMsgs } from './ToyReviewMsgs'
 import { addToyMsg } from '../store/actions/toy.actions'
+import { useState } from 'react'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
 const theme = createTheme({
   palette: {
@@ -42,8 +44,18 @@ export function ToyPreviewLarge({ toy, onDelete }) {
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
   const isOwner = toy?.owner?._id === user?._id
 
-  function onAddMsg(msg){
-    addToyMsg(toy, msg, user)
+  const [msgs, setMsgs] = useState(toy.msgs || [])
+
+  async function onAddMsg(msg) {
+    const toyId = toy._id
+    try {
+      const savedMsg = await addToyMsg(toyId, msg, user)
+      setMsgs(prevMsgs => [...prevMsgs, savedMsg])
+      showSuccessMsg('Review Added')
+      setMsgs
+    } catch (error) {
+      showErrorMsg('Failed to add a review')
+    }
   }
 
   return (
@@ -100,10 +112,8 @@ export function ToyPreviewLarge({ toy, onDelete }) {
               />
             ))}
           </Stack>
-          <ToyReviewMsgInput onAddMsg={onAddMsg}/>
-          {user?.msgs && user.msgs.map((msg) => (
-            <ToyReviewMsgs msg={msg} />
-          ))}
+          <ToyReviewMsgInput onAddMsg={onAddMsg} />
+          {msgs && msgs.map((msg) => <ToyReviewMsgs key={msg.id} msg={msg} />)}
         </CardContent>
       </ThemeProvider>
     </Card>
