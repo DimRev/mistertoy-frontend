@@ -1,13 +1,24 @@
+import { ToyReviewMsgInput } from './ToyReviewMsgInput'
 import { Link } from 'react-router-dom'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { Button, CardActionArea, CardActions, Chip, Rating, Stack } from '@mui/material'
+import {
+  Button,
+  CardActionArea,
+  CardActions,
+  Chip,
+  Rating,
+  Stack,
+  useRadioGroup,
+} from '@mui/material'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import useAdminRedirect from '../../hooks/useAdminRedirect'
 import { useSelector } from 'react-redux'
+import { ToyReviewMsgs } from './ToyReviewMsgs'
+import { addToyMsg } from '../store/actions/toy.actions'
 
 const theme = createTheme({
   palette: {
@@ -31,6 +42,9 @@ export function ToyPreviewLarge({ toy, onDelete }) {
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
   const isOwner = toy?.owner?._id === user?._id
 
+  function onAddMsg(msg){
+    addToyMsg(toy, msg, user)
+  }
 
   return (
     <Card className="preview-card" sx={{ maxWidth: 1 }}>
@@ -44,7 +58,7 @@ export function ToyPreviewLarge({ toy, onDelete }) {
           />
           <CardContent>
             <Stack direction="row" justifyContent="space-between">
-            <Rating name="read-only" value={toy.rating} readOnly />
+              <Rating name="read-only" value={toy.rating} readOnly />
               <Typography gutterBottom variant="h5" component="div">
                 {toy.name}
               </Typography>
@@ -57,7 +71,6 @@ export function ToyPreviewLarge({ toy, onDelete }) {
                 $ {toy.price}
               </Typography>
             </Stack>
-
           </CardContent>
         </CardActionArea>
         <CardActions>
@@ -76,17 +89,21 @@ export function ToyPreviewLarge({ toy, onDelete }) {
           </Link>
         </CardActions>
         <CardContent>
-        <Stack direction="row" spacing={1}>
-              {toy.labels.map((label, idx) => (
-                <Chip
-                  key={`${toy._id}${idx}`}
-                  color="secondary"
-                  style={{ color: theme.palette.secondary.contrastText }}
-                  size="small"
-                  label={label}
-                />
-              ))}
-            </Stack>
+          <Stack direction="row" spacing={1}>
+            {toy.labels.map((label, idx) => (
+              <Chip
+                key={`${toy._id}${idx}`}
+                color="secondary"
+                style={{ color: theme.palette.secondary.contrastText }}
+                size="small"
+                label={label}
+              />
+            ))}
+          </Stack>
+          <ToyReviewMsgInput onAddMsg={onAddMsg}/>
+          {user?.msgs && user.msgs.map((msg) => (
+            <ToyReviewMsgs msg={msg} />
+          ))}
         </CardContent>
       </ThemeProvider>
     </Card>

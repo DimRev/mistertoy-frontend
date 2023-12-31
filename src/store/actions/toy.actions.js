@@ -72,6 +72,15 @@ export async function saveToy(toy) {
   }
 }
 
+export function addToyMsg(toy,msg,user){
+  const newMsg = {...toyService.getEmptyMsg(), content:msg}
+  if(user) newMsg.owner = user
+  if(toy.msgs) toy.msgs = [...toy.msgs, newMsg]
+  else toy.msgs = [newMsg]
+  console.log(toy)
+  saveToy(toy)
+}
+
 export function setFilter(filterBy) {
   store.dispatch({ type: SET_FILTER, filterBy })
 }

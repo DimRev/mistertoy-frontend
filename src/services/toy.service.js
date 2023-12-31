@@ -73,6 +73,7 @@ export const toyService = {
   save,
   remove,
   getEmptyToy,
+  getEmptyMsg,
   getDefaultFilter,
 }
 
@@ -113,6 +114,10 @@ function getEmptyToy() {
     inStock: true,
     img: utilService.getRandomIntInclusive(0, imgName.length),
   }
+}
+
+function getEmptyMsg() {
+  return { content: '', owner: {username:'Anonymous'}, createdAt: Date.now() }
 }
 
 function getDefaultFilter() {
