@@ -77,9 +77,8 @@ export const toyService = {
 }
 
 function query(filterBy = {}, sortBy = 'name', owner = undefined, page = 1) {
-
   // return storageService.query(STORAGE_KEY)
-  return httpService.get(BASE_URL, {filterBy, sortBy, owner, page})
+  return httpService.get(BASE_URL, { filterBy, sortBy, owner, page })
 }
 
 function getById(toyId) {
@@ -112,6 +111,7 @@ function getEmptyToy() {
     rating: 2,
     createdAt: Date.now(),
     inStock: true,
+    img: utilService.getRandomIntInclusive(0, imgName.length),
   }
 }
 
@@ -124,3 +124,36 @@ function _demoDataLocalStorage() {
   if (!toys || toys.length === 0)
     utilService.saveToStorage(STORAGE_KEY, demoData)
 }
+
+const imgName = [
+  'rhino.png',
+  'nutcracker.png',
+  'naruto.png',
+  'monopoly.png',
+  'match4.png',
+  'lego2.png',
+  'lego.png',
+  'drum.png',
+  'dinosaur.png',
+  'chess.png',
+  'chess1.png',
+  'car2.png',
+  'car.png',
+  'armadilo.png',
+  'uno.png',
+  'train.png',
+  'toystory4.png',
+  'toystory3.png',
+  'toystory2.png',
+  'toystory.png',
+  'toyblast.png',
+  'telescope.png',
+  'teeth.png',
+  'starwars.png',
+  'sound1.png',
+  'sound.png',
+  'soliders.png',
+  'solider2.png',
+  'solider.png',
+  'worm.png',
+]
