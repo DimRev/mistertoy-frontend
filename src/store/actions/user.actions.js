@@ -47,6 +47,7 @@ export async function getUserById(userId) {
 
 export async function updateUser(user) {
   try {
+    console.log(user);
     const updatedUser = await userService.update(user)
     store.dispatch({type:SET_USER, user: updatedUser})
     return updatedUser

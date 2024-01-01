@@ -1,5 +1,9 @@
+export const cloudinaryService = {
+  uploadImg,
+}
+
 //FETCH
-const uploadImg = async (ev) => {
+async function uploadImg(ev) {
   //Defining our variables
   const CLOUD_NAME = 'deb9cau2u'
   const UPLOAD_PRESET = 'egurep0m'
@@ -19,10 +23,8 @@ const uploadImg = async (ev) => {
     })
     const elImg = document.createElement('img')
     const { url } = await res.json()
-    elImg.src = url
-    document.body.append(elImg)
+    return url
   } catch (err) {
     console.error(err)
   }
 }
-

@@ -8,17 +8,21 @@ import Box from '@mui/material/Box'
 import { getUserById, updateUser } from '../store/actions/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useSelector } from 'react-redux'
+import { Avatar } from '@mui/material'
+import { cloudinaryService } from '../services/cloudinary.service'
 
 export function UserProfileCard() {
   const user = useSelector((storeState) => storeState.userModule.loggedinUser)
   const [fullUser, setFullUser] = useState(null)
   const [editedUser, setEditedUser] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
+  const [imgUrl, setImgUrl] = useState('')
 
   useEffect(()=>{
     getUserById(user._id).then((newUser) => {
       setFullUser((prevUser) => {
         setEditedUser({...newUser})
+        setImgUrl(newUser.imgUrl)
         return { ...prevUser, ...newUser }})
     })
   },[])
@@ -34,7 +38,8 @@ export function UserProfileCard() {
 
   async function handleSaveChanges() {
     try {
-      await updateUser(editedUser)
+      if(!!imgUrl) await updateUser({...editedUser, imgUrl})
+      else await updateUser(editedUser)
       setFullUser(editedUser)
       showSuccessMsg('User updated successfully')
     } catch (err) {
@@ -51,6 +56,11 @@ export function UserProfileCard() {
     }))
   }
 
+  async function handleImgUpload(ev){
+    const newImgUrl = await cloudinaryService.uploadImg(ev)
+    setImgUrl(newImgUrl)
+  }
+
   if(!fullUser) return <></>
 
   return (
@@ -61,6 +71,8 @@ export function UserProfileCard() {
         </Typography>
         {isEditing ? (
           <>
+            <input onChange={handleImgUpload} type="file"></input>
+            <Avatar variant='rounded' src={imgUrl}>{fullUser.fullname.substring(0,1)}</Avatar>
             <TextField
               label="Full Name"
               fullWidth
@@ -85,6 +97,7 @@ export function UserProfileCard() {
           </>
         ) : (
           <>
+            <Avatar variant='rounded' src={imgUrl}>{fullUser.fullname.substring(0,1)}</Avatar>
             <Typography variant="subtitle1">
               Full Name: {fullUser.fullname}
             </Typography>
