@@ -50,9 +50,8 @@ export function ToyPreviewLarge({ toy, onDelete }) {
     const toyId = toy._id
     try {
       const savedMsg = await addToyMsg(toyId, msg, user)
-      setMsgs(prevMsgs => [...prevMsgs, savedMsg])
+      setMsgs(prevMsgs => [savedMsg, ...prevMsgs, ])
       showSuccessMsg('Review Added')
-      setMsgs
     } catch (error) {
       showErrorMsg('Failed to add a review')
     }
