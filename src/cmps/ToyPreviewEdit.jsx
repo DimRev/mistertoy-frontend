@@ -61,7 +61,7 @@ export function ToyPreviewEdit({ toy }) {
   return (
     <section className="toy-edit-page">
       <Paper sx={{height: 'calc(100vh - 120px - 4em)'}}>
-          <img src={`/public/${selectedToy.img}`} alt={selectedToy.name} />
+          <img src={selectedToy.img} alt={selectedToy.name} />
           <form onSubmit={handleSubmit}>
             <Box m={2}>
               <TextField
