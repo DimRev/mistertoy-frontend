@@ -8,14 +8,16 @@ import {
 } from '@mui/material'
 import { utilService } from '../services/util.service'
 
-export function ToyReviewMsgs({msg}) {
+export function ToyReviewMsgs({ msg }) {
   console.log(msg)
   return (
-    <Card sx={{margin:'1em'}} variant='outlined'>
+    <Card sx={{ margin: '1em' }} variant="outlined">
       <Grid container>
         <Grid item sm={1}>
           <CardContent>
-            <Avatar>{msg.owner.username.substring(0,1)}</Avatar>
+            <Avatar variant="rounded" src={msg.owner.imgUrl}>
+              {msg.owner.username.substring(0, 1)}
+            </Avatar>
           </CardContent>
         </Grid>
         <Grid item sm={11}>
@@ -26,9 +28,7 @@ export function ToyReviewMsgs({msg}) {
                 {utilService.timeDiff(msg.createdAt)}
               </Typography>
             </Stack>
-            <Typography >
-              {msg.content}
-            </Typography>
+            <Typography>{msg.content}</Typography>
           </CardContent>
         </Grid>
       </Grid>

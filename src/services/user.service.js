@@ -67,6 +67,7 @@ function _setLoggedinUser(user) {
     _id: user._id,
     username: user.username,
     fullname: user.fullname,
+    imgUrl: user.imgUrl,
     score: user.score,
   }
   if (user.isAdmin) userToSave.isAdmin = true

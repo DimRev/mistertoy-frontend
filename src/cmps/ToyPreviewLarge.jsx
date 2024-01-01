@@ -11,7 +11,6 @@ import {
   Chip,
   Rating,
   Stack,
-  useRadioGroup,
 } from '@mui/material'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
@@ -50,7 +49,7 @@ export function ToyPreviewLarge({ toy, onDelete }) {
     const toyId = toy._id
     try {
       const savedMsg = await addToyMsg(toyId, msg, user)
-      setMsgs(prevMsgs => [savedMsg, ...prevMsgs, ])
+      setMsgs((prevMsgs) => [savedMsg, ...prevMsgs])
       showSuccessMsg('Review Added')
     } catch (error) {
       showErrorMsg('Failed to add a review')
@@ -111,7 +110,7 @@ export function ToyPreviewLarge({ toy, onDelete }) {
               />
             ))}
           </Stack>
-          <ToyReviewMsgInput onAddMsg={onAddMsg} />
+          <ToyReviewMsgInput onAddMsg={onAddMsg} user={user} />
           {msgs && msgs.map((msg) => <ToyReviewMsgs key={msg.id} msg={msg} />)}
         </CardContent>
       </ThemeProvider>

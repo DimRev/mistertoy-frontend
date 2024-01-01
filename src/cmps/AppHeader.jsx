@@ -177,8 +177,9 @@ export function AppHeader() {
                   setIsAvatarMenuOpen((b) => !b)
                 }}>
                 <Avatar
-                  variant="rounded"
+                  variant="circle"
                   alt={user.fullname}
+                  src={user.imgUrl}
                   sx={{
                     bgcolor: theme.palette.secondary.main,
                     color: theme.palette.secondary.contrastText,
