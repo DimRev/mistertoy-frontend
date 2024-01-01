@@ -23,6 +23,7 @@ function getById(userId) {
 async function update(user) {
   try {
     const updatedUser = await httpService.put(SEC_URL + user._id, user)
+    if (user.isAdmin) updatedUser.isAdmin = true
     return _setLoggedinUser(updatedUser)
   } catch (err) {
     return Promise.reject('Invalid login')
